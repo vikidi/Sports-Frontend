@@ -1,12 +1,1 @@
-<h1>Hello World!</h1>
-<mat-slide-toggle>Toggle me!</mat-slide-toggle>
-<div *ngIf="auth.isAuthenticated$ | async; else loggedOut">
-  <app-logout></app-logout>
-</div>
-<ng-template #loggedOut>
-  <app-login></app-login>
-</ng-template>
-<ul *ngIf="auth.user$ | async as user">
-  <li>{{ user.name }}</li>
-  <li>{{ user.email }}</li>
-</ul>
+<router-outlet></router-outlet>
