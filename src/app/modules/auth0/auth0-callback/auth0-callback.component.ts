@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-auth0-callback',
   templateUrl: './auth0-callback.component.html',
-  styleUrls: ['./auth0-callback.component.css'],
+  styleUrls: ['./auth0-callback.component.scss'],
 })
 export class Auth0CallbackComponent implements OnInit {
   constructor(private http: HttpClient) {}

@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-polar-callback',
   templateUrl: './polar-callback.component.html',
-  styleUrls: ['./polar-callback.component.css'],
+  styleUrls: ['./polar-callback.component.scss'],
 })
 export class PolarCallbackComponent implements OnInit {
   constructor(

@@ -11,7 +11,7 @@ import { ProfileService } from 'src/app/services/profile.service';
   selector: 'app-profile',
   standalone: true,
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css'],
+  styleUrls: ['./profile.component.scss'],
   imports: [CommonModule, MatProgressSpinnerModule],
 })
 export class ProfileComponent implements OnInit {

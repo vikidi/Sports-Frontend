@@ -7,7 +7,7 @@ import { LandingHeaderComponent } from '../landing-header/landing-header.compone
   selector: 'app-landing',
   standalone: true,
   templateUrl: './landing.component.html',
-  styleUrls: ['./landing.component.css'],
+  styleUrls: ['./landing.component.scss'],
   imports: [SharedModule, LandingHeaderComponent],
 })
 export class LandingComponent {}

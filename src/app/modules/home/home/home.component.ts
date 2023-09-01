@@ -10,7 +10,7 @@ import { PolarModule } from 'src/app/modules/polar/polar.module';
   selector: 'app-home',
   standalone: true,
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css'],
+  styleUrls: ['./home.component.scss'],
   imports: [CommonModule, SharedModule, PolarModule],
 })
 export class HomeComponent {

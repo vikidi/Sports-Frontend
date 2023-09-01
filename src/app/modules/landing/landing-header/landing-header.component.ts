@@ -14,7 +14,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
   selector: 'app-landing-header',
   standalone: true,
   templateUrl: './landing-header.component.html',
-  styleUrls: ['./landing-header.component.css'],
+  styleUrls: ['./landing-header.component.scss'],
   imports: [
     CommonModule,
     RouterModule,

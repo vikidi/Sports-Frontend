@@ -8,7 +8,7 @@ import { AuthService } from '@auth0/auth0-angular';
   selector: 'app-login',
   standalone: true,
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
+  styleUrls: ['./login.component.scss'],
   imports: [MatIconModule, MatButtonModule],
 })
 export class LoginComponent {

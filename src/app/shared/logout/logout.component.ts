@@ -9,7 +9,7 @@ import { AuthService } from '@auth0/auth0-angular';
   selector: 'app-logout',
   standalone: true,
   templateUrl: './logout.component.html',
-  styleUrls: ['./logout.component.css'],
+  styleUrls: ['./logout.component.scss'],
   imports: [MatIconModule, MatButtonModule],
 })
 export class LogoutComponent {
