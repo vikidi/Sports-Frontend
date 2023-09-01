@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 import { AuthService } from '@auth0/auth0-angular';
 
@@ -7,13 +9,14 @@ import { AuthService } from '@auth0/auth0-angular';
   standalone: true,
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
+  imports: [MatIconModule, MatButtonModule],
 })
 export class LoginComponent {
-  // Inject the authentication service into your component through the constructor
   constructor(public auth: AuthService) {}
 
   login(): void {
-    // Call this to redirect the user to the login page
-    this.auth.loginWithRedirect();
+    this.auth.loginWithRedirect({
+      appState: { target: '/home' },
+    });
   }
 }

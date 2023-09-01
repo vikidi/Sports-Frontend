@@ -1,0 +1,17 @@
+<header id="header">
+  <mat-toolbar color="primary" class="toolbar">
+    <h1>Sports - Ville Saarinen</h1>
+    <span class="spacer"></span>
+    <div>
+      <button
+        mat-icon-button
+        [routerLink]="'/home'"
+        *ngIf="(auth.isAuthenticated$ | async) === true"
+      >
+        <mat-icon>home</mat-icon>
+      </button>
+    </div>
+    <app-login *ngIf="(auth.isAuthenticated$ | async) === false" />
+    <app-logout *ngIf="(auth.isAuthenticated$ | async) === true" />
+  </mat-toolbar>
+</header>

@@ -1,0 +1,9 @@
+:host {
+  justify-content: center;
+  display: flex;
+  background-color: grey;
+}
+
+#footer {
+  padding: 22px 0px;
+}

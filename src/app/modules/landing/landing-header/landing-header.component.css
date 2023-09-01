@@ -1,0 +1,18 @@
+:host {
+  width: 100%;
+  z-index: 10;
+  top: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+  position: fixed;
+}
+
+#header {
+  width: 100%;
+  display: flex;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}

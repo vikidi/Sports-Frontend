@@ -1,5 +1,7 @@
 import { DOCUMENT } from '@angular/common';
 import { Component, Inject } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 import { AuthService } from '@auth0/auth0-angular';
 
@@ -8,16 +10,15 @@ import { AuthService } from '@auth0/auth0-angular';
   standalone: true,
   templateUrl: './logout.component.html',
   styleUrls: ['./logout.component.css'],
+  imports: [MatIconModule, MatButtonModule],
 })
 export class LogoutComponent {
-  // Inject the authentication service into your component through the constructor
   constructor(
     @Inject(DOCUMENT) private doc: Document,
     public auth: AuthService
   ) {}
 
   logout(): void {
-    // Call this to redirect the user to the login page
     this.auth.logout({
       logoutParams: {
         returnTo: this.doc.location.origin,

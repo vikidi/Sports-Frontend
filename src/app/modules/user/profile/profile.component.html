@@ -1,0 +1,7 @@
+<h1>Profile</h1>
+<div *ngIf="loading | async">
+  <mat-spinner></mat-spinner>
+</div>
+<div *ngIf="profile | async as p">
+  <span>Polar connected: {{ p.polarConnected }}</span>
+</div>

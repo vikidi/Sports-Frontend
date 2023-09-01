@@ -1,17 +1,15 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
-import { RouterModule } from '@angular/router';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
-import { AuthModule } from '@auth0/auth0-angular';
+import { AuthHttpInterceptor } from '@auth0/auth0-angular';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
 
-import { environment } from '../environments/environment';
-
-import { HomeComponent } from './components/home/home.component';
-import { PolarCallbackComponent } from './components/polar-callback/polar-callback.component';
+import { AppAuthModule } from './app-auth.module';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,19 +17,13 @@ import { PolarCallbackComponent } from './components/polar-callback/polar-callba
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    AuthModule.forRoot({
-      domain: environment.auth0Domain,
-      clientId: environment.auth0ClientId,
-      authorizationParams: {
-        redirect_uri: window.location.origin,
-      },
-    }),
-    RouterModule.forRoot([
-      { path: '', component: HomeComponent },
-      { path: 'polar-callback', component: PolarCallbackComponent },
-    ]),
+    AppAuthModule,
+    AppRoutingModule,
+    LoadingBarRouterModule,
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthHttpInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

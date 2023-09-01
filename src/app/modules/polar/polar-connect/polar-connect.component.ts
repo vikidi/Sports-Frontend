@@ -13,6 +13,6 @@ export class PolarConnectComponent {
   constructor(@Inject(DOCUMENT) private document: Document) {}
 
   connect(): void {
-    this.document.location.href = `https://flow.polar.com/oauth2/authorization?response_type=code&client_id=${environment.polarClientId}&redirect_uri=${environment.polarCallbackUri}`;
+    this.document.location.href = `https://flow.polar.com/oauth2/authorization?response_type=code&client_id=${environment.polarClientId}`;
   }
 }

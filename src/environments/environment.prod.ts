@@ -3,5 +3,7 @@ export const environment = {
   auth0Domain: '',
   auth0ClientId: '',
   polarClientId: '',
-  polarCallbackUri: '',
+  apiBaseUri: '',
+  auth0ApiBaseUri: '',
+  auth0Audience: '',
 };
