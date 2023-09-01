@@ -9,6 +9,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { StyleManager } from 'src/app/services/style-manager.service';
 
 @Component({
   selector: 'app-landing-header',
@@ -25,5 +26,12 @@ import { MatToolbarModule } from '@angular/material/toolbar';
   ],
 })
 export class LandingHeaderComponent {
-  constructor(public auth: AuthService) {}
+  isDark = this.styleManager.isDark;
+
+  constructor(public auth: AuthService, private styleManager: StyleManager) {}
+
+  toggleDarkTheme() {
+    this.styleManager.toggleDarkTheme();
+    this.isDark = !this.isDark;
+  }
 }
