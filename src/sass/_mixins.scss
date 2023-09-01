@@ -1,0 +1,21 @@
+@use "sass:map";
+@use "@angular/material" as mat;
+
+@mixin link($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent-palette: map.get($color-config, "accent");
+
+  color: mat.get-color-from-palette($accent-palette, "default");
+  text-decoration-color: transparent;
+  text-decoration-line: underline;
+  transition-property: color, background-color, border-color,
+    text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter,
+    backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+
+  &:hover {
+    color: mat.get-color-from-palette($accent-palette, "lighter");
+    text-decoration-color: inherit;
+  }
+}

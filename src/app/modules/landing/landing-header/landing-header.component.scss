@@ -13,6 +13,14 @@
   display: flex;
 }
 
+.toolbar {
+  padding: 0 4vw;
+}
+
 .spacer {
   flex: 1 1 auto;
+}
+
+.bold {
+  font-weight: bold;
 }

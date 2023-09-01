@@ -1,29 +1,24 @@
 @use "sass:map";
 @use "@angular/material" as mat;
 
+@import "src/sass/mixins";
+
 @mixin color($theme) {
   $color-config: mat.get-color-config($theme);
   $primary-palette: map.get($color-config, "primary");
 
-  :host {
-    background-color: mat.get-color-from-palette($primary-palette, 100);
+  app-footer {
+    background-color: mat.get-color-from-palette($primary-palette);
   }
 
-  #footer {
-    background-color: mat.get-color-from-palette($primary-palette, 100);
+  .link {
+    @include link($theme);
   }
-}
-
-@mixin typography($typography-config) {
 }
 
 @mixin theme($theme, $typography-config) {
   $color-config: mat.get-color-config($theme);
   @if $color-config != null {
     @include color($theme);
-  }
-
-  @if $typography-config != null {
-    @include typography($typography-config);
   }
 }
