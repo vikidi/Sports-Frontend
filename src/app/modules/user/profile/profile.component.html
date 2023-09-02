@@ -1,7 +1,12 @@
-<h1>Profile</h1>
-<div *ngIf="loading | async">
-  <mat-spinner></mat-spinner>
-</div>
-<div *ngIf="profile | async as p">
-  <span>Polar connected: {{ p.polarConnected }}</span>
-</div>
+<app-page-wrapper>
+  <div *ngIf="auth.user$ | async as user">
+    <p>{{ user.name }}</p>
+    <p>{{ user.email }}</p>
+  </div>
+  <div *ngIf="profile | async as p">
+    <span *ngIf="p.polarConnected === true">Polar is connected.</span>
+    <div *ngIf="p.polarConnected === false">
+      <span>Connect Polar: <app-polar-connect /></span>
+    </div>
+  </div>
+</app-page-wrapper>

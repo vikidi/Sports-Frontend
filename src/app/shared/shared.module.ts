@@ -6,9 +6,16 @@ import { LogoutComponent } from './logout/logout.component';
 import { PageWrapperComponent } from './page-wrapper/page-wrapper.component';
 import { ContainerComponent } from './container/container.component';
 import { FooterComponent } from './footer/footer.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
-  imports: [CommonModule, LoginComponent, LogoutComponent, FooterComponent],
+  imports: [
+    CommonModule,
+    LoginComponent,
+    LogoutComponent,
+    FooterComponent,
+    NavbarComponent,
+  ],
   declarations: [PageWrapperComponent, ContainerComponent],
   providers: [],
   exports: [
@@ -18,6 +25,7 @@ import { FooterComponent } from './footer/footer.component';
     PageWrapperComponent,
     ContainerComponent,
     FooterComponent,
+    NavbarComponent,
   ],
 })
 export class SharedModule {}
