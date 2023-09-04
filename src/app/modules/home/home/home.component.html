@@ -1,3 +1,44 @@
 <app-page-wrapper>
-  <h1>Home</h1>
+  <input
+    name="exercise"
+    type="file"
+    class="file-input"
+    (change)="onFileSelected($event)"
+    #fileUpload
+  />
+  <div class="file-upload">
+    {{ fileName || "No file uploaded yet." }}
+
+    <button
+      mat-mini-fab
+      color="primary"
+      class="upload-btn"
+      (click)="fileUpload.click()"
+    >
+      <mat-icon>attach_file</mat-icon>
+    </button>
+  </div>
+  <div class="progress">
+    <mat-progress-bar
+      class="progress-bar"
+      mode="determinate"
+      [value]="uploadProgress"
+      *ngIf="uploadProgress"
+    >
+    </mat-progress-bar>
+  </div>
+  <div>
+    <mat-nav-list>
+      <div mat-subheader>Exercises</div>
+      <a
+        mat-list-item
+        class="list-link"
+        href="/exercise/{{ exercise._id }}"
+        *ngFor="let exercise of exercises | async"
+      >
+        <div matListItemTitle>{{ exercise.sport }}</div>
+        <div matListItemLine>{{ exercise.parsedDate | date }}</div>
+      </a>
+    </mat-nav-list>
+  </div>
 </app-page-wrapper>

@@ -8,6 +8,7 @@ import { HomeComponent } from './modules/home/home/home.component';
 import { PolarCallbackComponent } from './modules/polar/polar-callback/polar-callback.component';
 import { Auth0CallbackComponent } from './modules/auth0/auth0-callback/auth0-callback.component';
 import { ProfileComponent } from './modules/user/profile/profile.component';
+import { PageNotFoundComponent } from './modules/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   { path: '', component: LandingComponent },
@@ -27,6 +28,8 @@ const routes: Routes = [
     component: ProfileComponent,
     canActivate: [AuthGuard],
   },
+  //Wild Card Route for 404 request
+  { path: '**', pathMatch: 'full', component: PageNotFoundComponent },
 ];
 
 @NgModule({
