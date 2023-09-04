@@ -9,7 +9,14 @@
       [routerLink]="'/home'"
       *ngIf="(auth.isAuthenticated$ | async) === true"
     >
-      <mat-icon>home</mat-icon>
+      <mat-icon>directions_run</mat-icon>
+    </button>
+    <button
+      mat-icon-button
+      [routerLink]="'/routes'"
+      *ngIf="(auth.isAuthenticated$ | async) === true"
+    >
+      <mat-icon>route</mat-icon>
     </button>
     <button
       mat-icon-button

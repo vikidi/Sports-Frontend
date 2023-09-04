@@ -1,0 +1,17 @@
+<app-page-wrapper>
+  <div>
+    <mat-nav-list>
+      <button mat-raised-button (click)="createNew()">Create New</button>
+      <div mat-subheader>Routes</div>
+      <a
+        mat-list-item
+        class="list-link"
+        href="/routes/{{ route._id }}"
+        *ngFor="let route of routes | async"
+      >
+        <div matListItemTitle>{{ route.name }}</div>
+        <div matListItemLine>{{ route.description }}</div>
+      </a>
+    </mat-nav-list>
+  </div>
+</app-page-wrapper>

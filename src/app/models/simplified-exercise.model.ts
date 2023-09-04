@@ -1,9 +1,9 @@
 export class SimplifiedExercise {
-  _id!: String;
-  sport!: String;
+  _id!: string;
+  sport!: string;
   parsedDate!: Date;
-  elapsedSec!: Number;
-  distanceMeters!: Number;
-  averagePace!: Number;
-  averageHeartRate!: Number;
+  elapsedSec!: number;
+  distanceMeters!: number;
+  averagePace!: number;
+  averageHeartRate!: number;
 }
