@@ -1,0 +1,19 @@
+<app-page-wrapper>
+  <div *ngIf="route | async as r">
+    <h1>{{ r.name }}</h1>
+    <h2>{{ r.description }}</h2>
+    <mat-nav-list>
+      <button mat-raised-button (click)="createNew()">Create New</button>
+      <div mat-subheader>Groups</div>
+      <a
+        mat-list-item
+        class="list-link"
+        href="/groups/{{ group._id }}"
+        *ngFor="let group of r.groups"
+      >
+        <div matListItemTitle>{{ group.name }}</div>
+        <div matListItemLine>{{ group.description }}</div>
+      </a>
+    </mat-nav-list>
+  </div>
+</app-page-wrapper>

@@ -9,7 +9,10 @@ import { PolarCallbackComponent } from './modules/polar/polar-callback/polar-cal
 import { Auth0CallbackComponent } from './modules/auth0/auth0-callback/auth0-callback.component';
 import { ProfileComponent } from './modules/user/profile/profile.component';
 import { RouteListComponent } from './modules/route-list/route-list.component';
+import { RoutePageComponent } from './modules/route-page/route-page.component';
 import { PageNotFoundComponent } from './modules/page-not-found/page-not-found.component';
+import { GroupPageComponent } from './modules/group-page/group-page.component';
+import { ExercisePageComponent } from './modules/exercise-page/exercise-page.component';
 
 const routes: Routes = [
   { path: '', component: LandingComponent },
@@ -32,6 +35,21 @@ const routes: Routes = [
   {
     path: 'routes',
     component: RouteListComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'routes/:id',
+    component: RoutePageComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'groups/:id',
+    component: GroupPageComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'exercises/:id',
+    component: ExercisePageComponent,
     canActivate: [AuthGuard],
   },
 

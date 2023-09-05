@@ -1,0 +1,18 @@
+<app-page-wrapper>
+  <div *ngIf="group | async as g">
+    <h1>{{ g.name }}</h1>
+    <h2>{{ g.description }}</h2>
+    <mat-nav-list>
+      <div mat-subheader>Exercises</div>
+      <a
+        mat-list-item
+        class="list-link"
+        href="/exercises/{{ exercise._id }}"
+        *ngFor="let exercise of g.exercises"
+      >
+        <div matListItemTitle>{{ exercise.parsedDate | date }}</div>
+        <div matListItemLine>{{ exercise.averagePace }}</div>
+      </a>
+    </mat-nav-list>
+  </div>
+</app-page-wrapper>

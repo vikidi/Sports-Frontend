@@ -13,23 +13,17 @@ export class ExerciseService {
   private exercises$: BehaviorSubject<SimplifiedExercise[]> =
     new BehaviorSubject<SimplifiedExercise[]>([]);
 
-  public loading$ = new BehaviorSubject<boolean>(true);
-
   constructor(private http: HttpClient) {
-    this.loading$.next(true);
-
     this.http.get<SimplifiedExercise[]>(`${this.baseUrl}/my-list`).subscribe({
       next: (data) => this.exercises$.next(data),
-      error: () => this.loading$.next(false),
-      complete: () => this.loading$.next(false),
     });
-  }
-
-  getLoading(): Observable<boolean> {
-    return this.loading$;
   }
 
   getMyList(): Observable<SimplifiedExercise[]> {
     return this.exercises$;
+  }
+
+  getOne(id: string): Observable<SimplifiedExercise> {
+    return this.http.get<SimplifiedExercise>(`${this.baseUrl}/${id}`);
   }
 }

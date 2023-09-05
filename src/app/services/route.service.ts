@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, BehaviorSubject, of } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 
 import { Route } from '../models/route.model';
 
@@ -12,31 +12,25 @@ export class RouteService {
 
   private routes$: BehaviorSubject<Route[]> = new BehaviorSubject<Route[]>([]);
 
-  public loading$ = new BehaviorSubject<boolean>(true);
-
-  constructor(private http: HttpClient) {
-    this.loading$.next(true);
-
-    this.http.get<Route[]>(`${this.baseUrl}/my-list`).subscribe({
-      next: (data) => this.routes$.next(data),
-      error: () => this.loading$.next(false),
-      complete: () => this.loading$.next(false),
-    });
-  }
-
-  getLoading(): Observable<boolean> {
-    return this.loading$;
-  }
+  constructor(private http: HttpClient) {}
 
   getMyList(): Observable<Route[]> {
+    if (!this.routes$.getValue().length) {
+      this.http.get<Route[]>(`${this.baseUrl}/my-list`).subscribe({
+        next: (data) => this.routes$.next(data),
+      });
+    }
+
     return this.routes$;
+  }
+
+  getOne(id: string): Observable<Route> {
+    return this.http.get<Route>(`${this.baseUrl}/${id}`);
   }
 
   createNew(): void {
     this.http.post<Route>(`${this.baseUrl}/create`, {}).subscribe({
       next: (data) => this.routes$.next([...this.routes$.getValue(), data]),
-      error: () => this.loading$.next(false),
-      complete: () => this.loading$.next(false),
     });
   }
 }

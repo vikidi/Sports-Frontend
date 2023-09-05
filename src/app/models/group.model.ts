@@ -1,4 +1,4 @@
-export class SimplifiedExercise {
+class SimpleExercise {
   _id!: string;
   sport!: string;
   startingEpoch!: number;
@@ -9,4 +9,11 @@ export class SimplifiedExercise {
   averagePace!: number;
   averageCadence!: number;
   averageWatts!: number;
+}
+
+export class Group {
+  _id!: string;
+  exercises!: SimpleExercise[];
+  name!: string;
+  description!: string;
 }

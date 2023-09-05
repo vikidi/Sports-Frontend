@@ -1,0 +1,6 @@
+<app-page-wrapper>
+  <div *ngIf="exercise | async as e">
+    <h1>{{ e.parsedDate | date }}</h1>
+    <h2>{{ e.averagePace }}</h2>
+  </div>
+</app-page-wrapper>

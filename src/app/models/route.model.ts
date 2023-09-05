@@ -1,4 +1,5 @@
 class SimpleGroup {
+  _id!: string;
   exercises!: string[];
   name!: string;
   description!: string;
