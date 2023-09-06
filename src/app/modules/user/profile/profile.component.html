@@ -1,12 +1,32 @@
 <app-page-wrapper>
-  <div *ngIf="auth.user$ | async as user">
-    <p>{{ user.name }}</p>
-    <p>{{ user.email }}</p>
-  </div>
-  <div *ngIf="profile | async as p">
-    <span *ngIf="p.polarConnected === true">Polar is connected.</span>
-    <div *ngIf="p.polarConnected === false">
-      <span>Connect Polar: <app-polar-connect /></span>
-    </div>
-  </div>
+  <mat-card>
+    <mat-card-header *ngIf="auth.user$ | async as user">
+      <mat-card-title>{{ user.name }}</mat-card-title>
+      <mat-card-subtitle>{{ user.email }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content *ngIf="profile | async as p">
+      <mat-divider></mat-divider>
+      <div class="vertical-margin">
+        <span>
+          Polar is {{ p.polarConnected ? "connected" : "disconnected" }}.
+        </span>
+        <app-polar-connect
+          *ngIf="p.polarConnected === false"
+        ></app-polar-connect>
+        <button
+          *ngIf="p.polarConnected === true"
+          mat-raised-button
+          color="primary"
+        >
+          Disconnect
+        </button>
+      </div>
+      <mat-divider></mat-divider>
+    </mat-card-content>
+    <mat-card-actions align="end">
+      <button mat-raised-button color="primary" (click)="logout()">
+        Logout
+      </button>
+    </mat-card-actions>
+  </mat-card>
 </app-page-wrapper>
