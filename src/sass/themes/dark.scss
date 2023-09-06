@@ -25,6 +25,9 @@ $my-app-dark-theme: mat.define-dark-theme(
   @include mat.button-theme($my-app-dark-theme);
   @include mat.toolbar-theme($my-app-dark-theme);
   @include mat.icon-theme($my-app-dark-theme);
+  @include mat.card-theme($my-app-dark-theme);
+  @include mat.divider-theme($my-app-dark-theme);
+  @include mat.list-theme($my-app-dark-theme);
 
   @include components.theme($my-app-dark-theme, typography.$my-app-typography);
 }

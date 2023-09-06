@@ -7,6 +7,7 @@ import { AuthHttpInterceptor } from '@auth0/auth0-angular';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { AppAuthModule } from './app-auth.module';
 import { AppRoutingModule } from './app-routing.module';
@@ -20,6 +21,7 @@ import { AppRoutingModule } from './app-routing.module';
     AppAuthModule,
     AppRoutingModule,
     LoadingBarRouterModule,
+    FlexLayoutModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthHttpInterceptor, multi: true },

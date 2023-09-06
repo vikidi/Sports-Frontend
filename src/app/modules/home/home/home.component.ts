@@ -10,7 +10,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { SimplifiedExercise } from 'src/app/models/simplified-exercise.model';
 import { MatListModule } from '@angular/material/list';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDividerModule } from '@angular/material/divider';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { MatCardModule } from '@angular/material/card';
+
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @Component({
   selector: 'app-home',
@@ -23,6 +28,10 @@ import { SharedModule } from 'src/app/shared/shared.module';
     MatIconModule,
     MatProgressBarModule,
     MatListModule,
+    MatButtonModule,
+    MatDividerModule,
+    MatCardModule,
+    FlexLayoutModule,
   ],
 })
 export class HomeComponent implements OnInit {

@@ -1,12 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { LoginComponent } from './login/login.component';
-import { LogoutComponent } from './logout/logout.component';
-import { PageWrapperComponent } from './page-wrapper/page-wrapper.component';
-import { ContainerComponent } from './container/container.component';
-import { FooterComponent } from './footer/footer.component';
-import { NavbarComponent } from './navbar/navbar.component';
+import { LoginComponent } from './components/login/login.component';
+import { LogoutComponent } from './components/logout/logout.component';
+import { PageWrapperComponent } from './components/page-wrapper/page-wrapper.component';
+import { ContainerComponent } from './components/container/container.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { RoundPipe } from './pipes/round.pipe';
+import { MetersToKilometersPipe } from './pipes/metersToKilometers.pipe';
+import { PacePipe } from './pipes/pace.pipe';
+import { TimePipe } from './pipes/time.pipe';
 
 @NgModule({
   imports: [
@@ -16,7 +20,14 @@ import { NavbarComponent } from './navbar/navbar.component';
     FooterComponent,
     NavbarComponent,
   ],
-  declarations: [PageWrapperComponent, ContainerComponent],
+  declarations: [
+    PageWrapperComponent,
+    ContainerComponent,
+    RoundPipe,
+    MetersToKilometersPipe,
+    PacePipe,
+    TimePipe,
+  ],
   providers: [],
   exports: [
     CommonModule,
@@ -26,6 +37,10 @@ import { NavbarComponent } from './navbar/navbar.component';
     ContainerComponent,
     FooterComponent,
     NavbarComponent,
+    RoundPipe,
+    MetersToKilometersPipe,
+    PacePipe,
+    TimePipe,
   ],
 })
 export class SharedModule {}
