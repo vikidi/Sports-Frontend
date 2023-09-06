@@ -33,26 +33,6 @@
                       | time
                   }}
                 </span>
-                <span>
-                  <mat-icon
-                    *ngIf="averageDirection(group, 'elapsedSec') === 1"
-                    class="icon-center red"
-                    inline
-                    >trending_down</mat-icon
-                  >
-                  <mat-icon
-                    *ngIf="averageDirection(group, 'elapsedSec') === 0"
-                    class="icon-center"
-                    inline
-                    >"trending_flat"</mat-icon
-                  >
-                  <mat-icon
-                    *ngIf="averageDirection(group, 'elapsedSec') === -1"
-                    class="icon-center green"
-                    inline
-                    >"trending_up"</mat-icon
-                  >
-                </span>
               </div>
             </div>
             <div fxFlex>
