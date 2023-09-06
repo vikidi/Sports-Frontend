@@ -7,7 +7,6 @@ import { AuthService } from '@auth0/auth0-angular';
 import { ExerciseService } from 'src/app/services/exercise.service';
 
 import { MatIconModule } from '@angular/material/icon';
-import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { SimplifiedExercise } from 'src/app/models/simplified-exercise.model';
 import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
@@ -26,7 +25,6 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     CommonModule,
     SharedModule,
     MatIconModule,
-    MatProgressBarModule,
     MatListModule,
     MatButtonModule,
     MatDividerModule,

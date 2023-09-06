@@ -8,7 +8,8 @@ class SimpleGroup {
 export class Route {
   _id!: string;
   groups!: SimpleGroup[];
-  defaultGroup!: string;
+  defaultGroup!: SimpleGroup;
   name!: string;
   description!: string;
+  useAutomaticGrouping!: boolean;
 }

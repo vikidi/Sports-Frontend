@@ -1,17 +1,59 @@
 <app-page-wrapper>
-  <div>
-    <mat-nav-list>
-      <button mat-raised-button (click)="createNew()">Create New</button>
-      <div mat-subheader>Routes</div>
-      <a
-        mat-list-item
-        class="list-link"
-        href="/routes/{{ route._id }}"
-        *ngFor="let route of routes | async"
-      >
-        <div matListItemTitle>{{ route.name }}</div>
-        <div matListItemLine>{{ route.description }}</div>
-      </a>
-    </mat-nav-list>
-  </div>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Routes</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-divider></mat-divider>
+      <mat-nav-list>
+        <div *ngFor="let route of routes | async">
+          <a
+            class="list-item"
+            mat-list-item
+            href="/routes/{{ route._id }}"
+            fxLayout="row"
+          >
+            <div fxFlex fxLayout="row" class="center">
+              <div>
+                <div matListItemTitle>{{ route.name }}</div>
+                <div matListItemLine>
+                  {{ route.description }}
+                </div>
+              </div>
+            </div>
+            <div fxFlex>
+              <div matListItemLine>Groups: {{ route.groups.length }}</div>
+              <div matListItemLine>
+                Exercises:
+                {{ route.groups.reduce(exerciseCounter, 0) }}
+              </div>
+            </div>
+            <div fxFlex>
+              <div matListItemLine>
+                {{ averageDistance(route) | mToKm | round : 2 }} km
+              </div>
+              <div matListItemLine>
+                <span>AutoMatch </span>
+                <span
+                  ><mat-icon class="icon-center" inline>{{
+                    route.useAutomaticGrouping ? "check" : "clear"
+                  }}</mat-icon></span
+                >
+              </div>
+            </div>
+          </a>
+          <mat-divider class="list-divider"></mat-divider>
+        </div>
+      </mat-nav-list>
+      <div *ngIf="(routes | async)?.length === 0">
+        <h4>No routes.</h4>
+      </div>
+      <mat-divider></mat-divider>
+    </mat-card-content>
+    <mat-card-actions align="end">
+      <button mat-raised-button color="primary" (click)="createNew()">
+        Create Route
+      </button>
+    </mat-card-actions>
+  </mat-card>
 </app-page-wrapper>

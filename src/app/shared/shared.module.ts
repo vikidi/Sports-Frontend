@@ -11,6 +11,7 @@ import { RoundPipe } from './pipes/round.pipe';
 import { MetersToKilometersPipe } from './pipes/metersToKilometers.pipe';
 import { PacePipe } from './pipes/pace.pipe';
 import { TimePipe } from './pipes/time.pipe';
+import { OrderByPipe } from './pipes/orderBy.pipe';
 
 @NgModule({
   imports: [
@@ -27,6 +28,7 @@ import { TimePipe } from './pipes/time.pipe';
     MetersToKilometersPipe,
     PacePipe,
     TimePipe,
+    OrderByPipe,
   ],
   providers: [],
   exports: [
@@ -41,6 +43,7 @@ import { TimePipe } from './pipes/time.pipe';
     MetersToKilometersPipe,
     PacePipe,
     TimePipe,
+    OrderByPipe,
   ],
 })
 export class SharedModule {}

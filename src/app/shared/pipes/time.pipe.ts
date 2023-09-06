@@ -6,25 +6,15 @@ export class TimePipe implements PipeTransform {
   transform(value: number): string {
     const hourValue = value / 3600;
 
-    console.log(hourValue);
-
     let hours = Math.floor(hourValue);
 
     const hourReminder = hourValue - hours;
     const minutesValue = hourReminder * 60;
 
-    console.log(hours);
-    console.log(hourReminder);
-    console.log(minutesValue);
-
     let minutes = Math.floor(minutesValue);
 
     const secondsRemainder = minutesValue - minutes;
     let seconds = roundUtil(secondsRemainder * 60, 0);
-
-    console.log(minutes);
-    console.log(secondsRemainder);
-    console.log(seconds);
 
     if (seconds === 60) {
       minutes += 1;
