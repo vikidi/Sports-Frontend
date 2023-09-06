@@ -18,6 +18,13 @@
             href="/groups/{{ group._id }}"
             fxLayout="row"
           >
+            <div
+              class="fixed-icon"
+              fxFlex
+              *ngIf="route.defaultGroup._id === group._id"
+            >
+              <mat-icon fxFlex>star-outline</mat-icon>
+            </div>
             <div fxFlex>
               <div matListItemTitle>{{ group.name }}</div>
               <div matListItemLine>{{ group.description }}</div>
