@@ -1,19 +1,71 @@
 <app-page-wrapper>
-  <div *ngIf="route | async as r">
-    <h1>{{ r.name }}</h1>
-    <h2>{{ r.description }}</h2>
-    <mat-nav-list>
-      <button mat-raised-button (click)="createNew()">Create New</button>
-      <div mat-subheader>Groups</div>
-      <a
-        mat-list-item
-        class="list-link"
-        href="/groups/{{ group._id }}"
-        *ngFor="let group of r.groups"
-      >
-        <div matListItemTitle>{{ group.name }}</div>
-        <div matListItemLine>{{ group.description }}</div>
-      </a>
-    </mat-nav-list>
-  </div>
+  <mat-card *ngIf="route | async as route">
+    <mat-card-header>
+      <mat-card-title>{{ route.name }}</mat-card-title>
+      <mat-card-subtitle>{{ route.description }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-divider></mat-divider>
+      <div class="vertical-margin">
+        {{ averageDistance(route) | mToKm | round : 2 }} km
+      </div>
+      <mat-divider></mat-divider>
+      <mat-nav-list>
+        <div *ngFor="let group of route.groups">
+          <a
+            class="list-item"
+            mat-list-item
+            href="/groups/{{ group._id }}"
+            fxLayout="row"
+          >
+            <div fxFlex>
+              <div matListItemTitle>{{ group.name }}</div>
+              <div matListItemLine>{{ group.description }}</div>
+            </div>
+            <div fxFlex>
+              <div matListItemLine>Exercises: {{ group.exercises.length }}</div>
+              <div matListItemLine>
+                {{
+                  group.exercises
+                    | orderBy : "startingEpoch" : "desc"
+                    | lastMovingAve : "elapsedSec"
+                    | time
+                }}
+              </div>
+            </div>
+            <div fxFlex>
+              <div matListItemLine>
+                {{
+                  group.exercises
+                    | orderBy : "startingEpoch" : "desc"
+                    | lastMovingAve : "averagePace"
+                    | pace
+                }}
+                min/km
+              </div>
+              <div matListItemLine>
+                {{
+                  group.exercises
+                    | orderBy : "startingEpoch" : "desc"
+                    | lastMovingAve : "averageHeartRate"
+                    | round : 0
+                }}
+                bpm
+              </div>
+            </div>
+          </a>
+          <mat-divider class="list-divider"></mat-divider>
+        </div>
+      </mat-nav-list>
+      <div *ngIf="route.groups.length === 0">
+        <h4>No groups.</h4>
+      </div>
+      <mat-divider></mat-divider>
+    </mat-card-content>
+    <mat-card-actions align="end">
+      <button mat-raised-button color="primary" (click)="createNew()">
+        Create Group
+      </button>
+    </mat-card-actions>
+  </mat-card>
 </app-page-wrapper>

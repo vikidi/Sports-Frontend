@@ -1,6 +1,13 @@
+class SimpleExercise {
+  _id!: string;
+  elapsedSec!: number;
+  averageHeartRate!: number;
+  averagePace!: number;
+}
+
 class SimpleGroup {
   _id!: string;
-  exercises!: string[];
+  exercises!: SimpleExercise[];
   name!: string;
   description!: string;
 }

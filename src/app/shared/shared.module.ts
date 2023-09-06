@@ -12,6 +12,7 @@ import { MetersToKilometersPipe } from './pipes/metersToKilometers.pipe';
 import { PacePipe } from './pipes/pace.pipe';
 import { TimePipe } from './pipes/time.pipe';
 import { OrderByPipe } from './pipes/orderBy.pipe';
+import { LastMovingAveragePipe } from './pipes/lastMovingAverage.pipe';
 
 @NgModule({
   imports: [
@@ -29,6 +30,7 @@ import { OrderByPipe } from './pipes/orderBy.pipe';
     PacePipe,
     TimePipe,
     OrderByPipe,
+    LastMovingAveragePipe,
   ],
   providers: [],
   exports: [
@@ -44,6 +46,7 @@ import { OrderByPipe } from './pipes/orderBy.pipe';
     PacePipe,
     TimePipe,
     OrderByPipe,
+    LastMovingAveragePipe,
   ],
 })
 export class SharedModule {}
