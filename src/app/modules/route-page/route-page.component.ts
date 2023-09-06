@@ -74,7 +74,7 @@ export class RoutePageComponent implements OnInit {
     const prev = lastTwo[0];
     const latest = lastTwo[1];
 
-    if (((latest - prev) / prev) * 100 < flatPercent) return 0;
+    if (prev == 0 || ((latest - prev) / prev) * 100 < flatPercent) return 0;
     if (latest > prev) return 1;
     return -1;
   }
