@@ -1,4 +1,4 @@
-@use "../../app/shared/footer/footer-theme" as footer;
+@use "../../app/shared/components/footer/footer-theme" as footer;
 
 @mixin theme($theme, $typography-config) {
   @include footer.theme($theme, $typography-config);
