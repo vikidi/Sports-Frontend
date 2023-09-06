@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Observable, BehaviorSubject, share } from 'rxjs';
 
 import { Route } from '../models/route.model';
 
@@ -25,7 +25,7 @@ export class RouteService {
   }
 
   getOne(id: string): Observable<Route> {
-    return this.http.get<Route>(`${this.baseUrl}/${id}`);
+    return this.http.get<Route>(`${this.baseUrl}/${id}`).pipe(share());
   }
 
   createNew(): void {

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Observable, BehaviorSubject, share } from 'rxjs';
 
 import { SimplifiedExercise } from '../models/simplified-exercise.model';
 
@@ -24,6 +24,8 @@ export class ExerciseService {
   }
 
   getOne(id: string): Observable<SimplifiedExercise> {
-    return this.http.get<SimplifiedExercise>(`${this.baseUrl}/${id}`);
+    return this.http
+      .get<SimplifiedExercise>(`${this.baseUrl}/${id}`)
+      .pipe(share());
   }
 }

@@ -15,8 +15,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 
-import { meanBy } from 'lodash';
-import { movingAverage } from 'src/app/utils/movingAverage';
+import { meanBy, orderBy } from 'lodash';
+import { lastTwoMovingAverages } from 'src/app/utils/lastTwoMovingAverages';
 
 @Component({
   selector: 'app-route-page',
@@ -63,5 +63,19 @@ export class RoutePageComponent implements OnInit {
 
   createNew() {
     this.groupService.createNew(this.routeId);
+  }
+
+  averageDirection(group: any, field: string, flatPercent: number = 0.1) {
+    const lastTwo = lastTwoMovingAverages(
+      orderBy(group.exercises, ['startingEpoch'], ['desc']).map(
+        (e: any) => e[field]
+      )
+    );
+    const prev = lastTwo[0];
+    const latest = lastTwo[1];
+
+    if (((latest - prev) / prev) * 100 < flatPercent) return 0;
+    if (latest > prev) return 1;
+    return -1;
   }
 }

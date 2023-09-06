@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Observable, BehaviorSubject, share } from 'rxjs';
 
 import { Group } from '../models/group.model';
 
@@ -25,7 +25,7 @@ export class GroupService {
   }
 
   getOne(id: string): Observable<Group> {
-    return this.http.get<Group>(`${this.baseUrl}/${id}`);
+    return this.http.get<Group>(`${this.baseUrl}/${id}`).pipe(share());
   }
 
   createNew(routeId: string): void {

@@ -25,32 +25,98 @@
             <div fxFlex>
               <div matListItemLine>Exercises: {{ group.exercises.length }}</div>
               <div matListItemLine>
-                {{
-                  group.exercises
-                    | orderBy : "startingEpoch" : "desc"
-                    | lastMovingAve : "elapsedSec"
-                    | time
-                }}
+                <span
+                  >{{
+                    group.exercises
+                      | orderBy : "startingEpoch" : "desc"
+                      | lastMovingAve : "elapsedSec"
+                      | time
+                  }}
+                </span>
+                <span>
+                  <mat-icon
+                    *ngIf="averageDirection(group, 'elapsedSec') === 1"
+                    class="icon-center red"
+                    inline
+                    >trending_down</mat-icon
+                  >
+                  <mat-icon
+                    *ngIf="averageDirection(group, 'elapsedSec') === 0"
+                    class="icon-center"
+                    inline
+                    >"trending_flat"</mat-icon
+                  >
+                  <mat-icon
+                    *ngIf="averageDirection(group, 'elapsedSec') === -1"
+                    class="icon-center green"
+                    inline
+                    >"trending_up"</mat-icon
+                  >
+                </span>
               </div>
             </div>
             <div fxFlex>
               <div matListItemLine>
-                {{
-                  group.exercises
-                    | orderBy : "startingEpoch" : "desc"
-                    | lastMovingAve : "averagePace"
-                    | pace
-                }}
-                min/km
+                <span>
+                  {{
+                    group.exercises
+                      | orderBy : "startingEpoch" : "desc"
+                      | lastMovingAve : "averagePace"
+                      | pace
+                  }}
+                  min/km
+                </span>
+                <span>
+                  <mat-icon
+                    *ngIf="averageDirection(group, 'averagePace') === 1"
+                    class="icon-center red"
+                    inline
+                    >trending_down</mat-icon
+                  >
+                  <mat-icon
+                    *ngIf="averageDirection(group, 'averagePace') === 0"
+                    class="icon-center"
+                    inline
+                    >"trending_flat"</mat-icon
+                  >
+                  <mat-icon
+                    *ngIf="averageDirection(group, 'averagePace') === -1"
+                    class="icon-center green"
+                    inline
+                    >"trending_up"</mat-icon
+                  >
+                </span>
               </div>
               <div matListItemLine>
-                {{
-                  group.exercises
-                    | orderBy : "startingEpoch" : "desc"
-                    | lastMovingAve : "averageHeartRate"
-                    | round : 0
-                }}
-                bpm
+                <span>
+                  {{
+                    group.exercises
+                      | orderBy : "startingEpoch" : "desc"
+                      | lastMovingAve : "averageHeartRate"
+                      | round : 0
+                  }}
+                  bpm
+                </span>
+                <span>
+                  <mat-icon
+                    *ngIf="averageDirection(group, 'averageHeartRate') === 1"
+                    class="icon-center red"
+                    inline
+                    >trending_down</mat-icon
+                  >
+                  <mat-icon
+                    *ngIf="averageDirection(group, 'averageHeartRate') === 0"
+                    class="icon-center"
+                    inline
+                    >"trending_flat"</mat-icon
+                  >
+                  <mat-icon
+                    *ngIf="averageDirection(group, 'averageHeartRate') === -1"
+                    class="icon-center green"
+                    inline
+                    >"trending_up"</mat-icon
+                  >
+                </span>
               </div>
             </div>
           </a>
