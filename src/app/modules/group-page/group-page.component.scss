@@ -1,0 +1,55 @@
+.list-divider {
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+mat-nav-list {
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+mat-card-header {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+mat-card-content {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+mat-card-actions {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.list-item {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.list-item-icon {
+  align-self: center;
+  margin: 0 10px;
+}
+
+.green {
+  color: rgb(0, 255, 0);
+}
+
+.red {
+  color: rgb(255, 0, 0);
+}
+
+.vertical-margin {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.center {
+  justify-content: center;
+}
+
+mat-nav-list > div:last-child > mat-divider {
+  display: none;
+}

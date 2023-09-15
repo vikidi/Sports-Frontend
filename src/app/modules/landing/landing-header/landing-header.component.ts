@@ -10,6 +10,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { StyleManager } from 'src/app/services/style-manager.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-landing-header',
@@ -26,12 +27,13 @@ import { StyleManager } from 'src/app/services/style-manager.service';
   ],
 })
 export class LandingHeaderComponent {
-  isDark = this.styleManager.isDark;
+  isDark: Observable<boolean>;
 
-  constructor(public auth: AuthService, private styleManager: StyleManager) {}
+  constructor(public auth: AuthService, private styleManager: StyleManager) {
+    this.isDark = this.styleManager.isDark();
+  }
 
   toggleDarkTheme() {
     this.styleManager.toggleDarkTheme();
-    this.isDark = !this.isDark;
   }
 }

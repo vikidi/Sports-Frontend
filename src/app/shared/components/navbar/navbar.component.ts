@@ -12,6 +12,7 @@ import { StyleManager } from 'src/app/services/style-manager.service';
 
 import { LoginComponent } from '../login/login.component';
 import { LogoutComponent } from '../logout/logout.component';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
@@ -29,12 +30,13 @@ import { LogoutComponent } from '../logout/logout.component';
   ],
 })
 export class NavbarComponent {
-  isDark = this.styleManager.isDark;
+  isDark: Observable<boolean>;
 
-  constructor(public auth: AuthService, private styleManager: StyleManager) {}
+  constructor(public auth: AuthService, private styleManager: StyleManager) {
+    this.isDark = this.styleManager.isDark();
+  }
 
   toggleDarkTheme() {
     this.styleManager.toggleDarkTheme();
-    this.isDark = !this.isDark;
   }
 }

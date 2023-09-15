@@ -1,19 +1,8 @@
-class SimpleExercise {
-  _id!: string;
-  sport!: string;
-  startingEpoch!: number;
-  parsedDate!: Date;
-  distanceMeters!: number;
-  elapsedSec!: number;
-  averageHeartRate!: number;
-  averagePace!: number;
-  averageCadence!: number;
-  averageWatts!: number;
-}
+import { SimplifiedExercise } from './simplified-exercise.model';
 
 export class Group {
   _id!: string;
-  exercises!: SimpleExercise[];
+  exercises!: SimplifiedExercise[];
   name!: string;
   description!: string;
 }

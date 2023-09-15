@@ -35,7 +35,7 @@
                 <span
                   >{{
                     group.exercises
-                      | orderBy : "startingEpoch" : "desc"
+                      | orderBy : "startingEpoch" : "asc"
                       | lastMovingAve : "elapsedSec"
                       | time
                   }}
@@ -47,7 +47,7 @@
                 <span>
                   {{
                     group.exercises
-                      | orderBy : "startingEpoch" : "desc"
+                      | orderBy : "startingEpoch" : "asc"
                       | lastMovingAve : "averagePace"
                       | pace
                   }}
@@ -78,7 +78,7 @@
                 <span>
                   {{
                     group.exercises
-                      | orderBy : "startingEpoch" : "desc"
+                      | orderBy : "startingEpoch" : "asc"
                       | lastMovingAve : "averageHeartRate"
                       | round : 0
                   }}

@@ -1,21 +1,9 @@
-class SimpleExercise {
-  _id!: string;
-  elapsedSec!: number;
-  averageHeartRate!: number;
-  averagePace!: number;
-}
-
-class SimpleGroup {
-  _id!: string;
-  exercises!: SimpleExercise[];
-  name!: string;
-  description!: string;
-}
+import { Group } from './group.model';
 
 export class Route {
   _id!: string;
-  groups!: SimpleGroup[];
-  defaultGroup!: SimpleGroup;
+  groups!: Group[];
+  defaultGroup!: Group;
   name!: string;
   description!: string;
   useAutomaticGrouping!: boolean;

@@ -67,7 +67,7 @@ export class RoutePageComponent implements OnInit {
 
   averageDirection(group: any, field: string, flatPercent: number = 0.1) {
     const lastTwo = lastTwoMovingAverages(
-      orderBy(group.exercises, ['startingEpoch'], ['desc']).map(
+      orderBy(group.exercises, ['startingEpoch'], ['asc']).map(
         (e: any) => e[field]
       )
     );

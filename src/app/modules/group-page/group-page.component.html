@@ -1,18 +1,58 @@
 <app-page-wrapper>
-  <div *ngIf="group | async as g">
-    <h1>{{ g.name }}</h1>
-    <h2>{{ g.description }}</h2>
-    <mat-nav-list>
-      <div mat-subheader>Exercises</div>
-      <a
-        mat-list-item
-        class="list-link"
-        href="/exercises/{{ exercise._id }}"
-        *ngFor="let exercise of g.exercises"
-      >
-        <div matListItemTitle>{{ exercise.parsedDate | date }}</div>
-        <div matListItemLine>{{ exercise.averagePace }}</div>
-      </a>
-    </mat-nav-list>
-  </div>
+  <mat-card *ngIf="group | async as g">
+    <mat-card-header>
+      <mat-card-title>{{ g.name }}</mat-card-title>
+      <mat-card-subtitle>{{ g.description }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-divider></mat-divider>
+      <app-group-charts [group]="g"></app-group-charts>
+      <mat-divider></mat-divider>
+      <h3>Exercises</h3>
+      <mat-nav-list>
+        <div
+          *ngFor="
+            let exercise of g.exercises | orderBy : 'startingEpoch' : 'desc'
+          "
+        >
+          <a
+            class="list-item"
+            mat-list-item
+            href="/exercises/{{ exercise._id }}"
+            fxLayout="row"
+          >
+            <div fxFlex fxLayout="row" class="center">
+              <div class="list-item-icon">
+                <mat-icon matListItemIcon *ngIf="exercise.sport === 'Running'"
+                  >directions_run</mat-icon
+                >
+              </div>
+              <div>
+                <div matListItemTitle>{{ exercise.sport }}</div>
+                <div matListItemLine>
+                  {{ exercise.parsedDate | date : "dd.MM.yyyy" }}
+                </div>
+              </div>
+            </div>
+            <div fxFlex>
+              <div matListItemLine>
+                {{ exercise.distanceMeters | mToKm | round : 2 }} km
+              </div>
+              <div matListItemLine>{{ exercise.elapsedSec | time }}</div>
+            </div>
+            <div fxFlex>
+              <div matListItemLine>
+                {{ exercise.averagePace | pace }} min/km
+              </div>
+              <div matListItemLine>{{ exercise.averageHeartRate }} bpm</div>
+            </div>
+          </a>
+          <mat-divider class="list-divider"></mat-divider>
+        </div>
+      </mat-nav-list>
+      <div *ngIf="g.exercises.length === 0">
+        <h4>No exercises.</h4>
+      </div>
+    </mat-card-content>
+  </mat-card>
 </app-page-wrapper>

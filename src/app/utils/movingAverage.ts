@@ -13,7 +13,7 @@ export function movingAverage(numbers: number[], movingLength: number = 3) {
 
   return chain(numbers)
     .map((_number, index, array) =>
-      slice(array, Math.max(0, index - movingLength), index + 1)
+      slice(array, Math.max(0, index - movingLength + 1), index + 1)
     )
     .map(average)
     .value();

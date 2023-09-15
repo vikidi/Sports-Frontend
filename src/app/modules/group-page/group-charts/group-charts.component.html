@@ -1,0 +1,57 @@
+<div fxLayout="row" class="vertical-margin">
+  <apx-chart
+    fxFlex
+    #chart
+    [series]="paceChart.series"
+    [chart]="paceChart.chart"
+    [yaxis]="paceChart.yaxis"
+    [xaxis]="commonOptions.xaxis"
+    [markers]="commonOptions.markers"
+    [title]="paceChart.title"
+    [stroke]="commonOptions.stroke"
+    [legend]="commonOptions.legend"
+    [theme]="commonOptions.theme"
+    [tooltip]="commonOptions.tooltip"
+  ></apx-chart>
+  <apx-chart
+    fxFlex
+    [series]="heartRateChart.series"
+    [chart]="heartRateChart.chart"
+    [yaxis]="heartRateChart.yaxis"
+    [xaxis]="commonOptions.xaxis"
+    [markers]="commonOptions.markers"
+    [title]="heartRateChart.title"
+    [stroke]="commonOptions.stroke"
+    [legend]="commonOptions.legend"
+    [theme]="commonOptions.theme"
+    [tooltip]="commonOptions.tooltip"
+  ></apx-chart>
+</div>
+<div fxLayout="row" class="vertical-margin">
+  <apx-chart
+    fxFlex
+    [series]="cadenceChart.series"
+    [chart]="cadenceChart.chart"
+    [yaxis]="cadenceChart.yaxis"
+    [xaxis]="commonOptions.xaxis"
+    [markers]="commonOptions.markers"
+    [title]="cadenceChart.title"
+    [stroke]="commonOptions.stroke"
+    [legend]="commonOptions.legend"
+    [theme]="commonOptions.theme"
+    [tooltip]="commonOptions.tooltip"
+  ></apx-chart>
+  <apx-chart
+    fxFlex
+    [series]="wattsChart.series"
+    [chart]="wattsChart.chart"
+    [yaxis]="wattsChart.yaxis"
+    [xaxis]="commonOptions.xaxis"
+    [markers]="commonOptions.markers"
+    [title]="wattsChart.title"
+    [stroke]="commonOptions.stroke"
+    [legend]="commonOptions.legend"
+    [theme]="commonOptions.theme"
+    [tooltip]="commonOptions.tooltip"
+  ></apx-chart>
+</div>

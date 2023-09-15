@@ -12,10 +12,6 @@ export function lastMovingAverage(numbers: number[], movingLength: number = 3) {
   if (!numbers.length) return [0];
 
   return average(
-    slice(
-      numbers,
-      Math.max(0, numbers.length - 1 - movingLength),
-      numbers.length
-    )
+    slice(numbers, Math.max(0, numbers.length - movingLength), numbers.length)
   );
 }
