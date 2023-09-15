@@ -10,13 +10,7 @@
 @import "./variables";
 @import "./mixins";
 
-@include mat.core-theme(light.$my-app-light-theme);
-@include mat.button-theme(light.$my-app-light-theme);
-@include mat.toolbar-theme(light.$my-app-light-theme);
-@include mat.icon-theme(light.$my-app-light-theme);
-@include mat.card-theme(light.$my-app-light-theme);
-@include mat.divider-theme(light.$my-app-light-theme);
-@include mat.list-theme(light.$my-app-light-theme);
+@include mat.all-component-themes(light.$my-app-light-theme);
 
 @include components.theme(
   light.$my-app-light-theme,

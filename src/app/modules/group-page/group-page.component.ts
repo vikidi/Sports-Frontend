@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable, Subscription, of } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 
 import { Group } from 'src/app/models/group.model';
 import { GroupService } from 'src/app/services/group.service';
@@ -13,7 +13,6 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { MatCardModule } from '@angular/material/card';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { StyleManager } from 'src/app/services/style-manager.service';
 import { GroupChartsComponent } from './group-charts/group-charts.component';
 
 @Component({
@@ -39,8 +38,7 @@ export class GroupPageComponent implements OnInit {
 
   constructor(
     private groupService: GroupService,
-    private activatedRoute: ActivatedRoute,
-    private styleManager: StyleManager
+    private activatedRoute: ActivatedRoute
   ) {}
 
   ngOnInit() {

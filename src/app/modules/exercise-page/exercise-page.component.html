@@ -1,6 +1,50 @@
 <app-page-wrapper>
-  <div *ngIf="exercise | async as e">
-    <h1>{{ e.parsedDate | date }}</h1>
-    <h2>{{ e.averagePace }}</h2>
-  </div>
+  <mat-card *ngIf="exercise | async as e">
+    <mat-card-header>
+      <mat-card-title>{{ e.sport }}</mat-card-title>
+      <mat-card-subtitle>{{
+        e.parsedDate | date : "dd.MM.yyyy HH:mm"
+      }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-divider></mat-divider>
+      <div fxLayout="row" class="vertical-margin">
+        <div fxFlex>
+          Distance: {{ e.distanceMeters | mToKm | round : 2 }} km
+        </div>
+        <div fxFlex>Time: {{ e.elapsedSec | time }}</div>
+      </div>
+      <div fxLayout="row" class="vertical-margin">
+        <div fxFlex>Average Pace: {{ e.averagePace | pace }} min / km</div>
+        <div fxFlex>Average Heart Rate: {{ e.averageHeartRate }} bpm</div>
+      </div>
+      <div fxLayout="row" class="vertical-margin">
+        <div fxFlex>Average Cadence: {{ e.averageCadence * 2 }}</div>
+        <div fxFlex>Average Watts: {{ e.averageWatts }} W</div>
+      </div>
+      <div class="vertical-margin">
+        <mat-form-field>
+          <mat-label>Group</mat-label>
+          <mat-select [formControl]="groupControl">
+            <mat-option>-- None --</mat-option>
+            <mat-optgroup
+              *ngFor="let route of routes | async"
+              [label]="route.name"
+            >
+              <mat-option
+                *ngFor="let group of route.groups"
+                [value]="group._id"
+              >
+                {{ group.name }}
+              </mat-option>
+            </mat-optgroup>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </mat-card-content>
+    <mat-divider></mat-divider>
+    <mat-card-actions align="end">
+      <button mat-raised-button color="primary" (click)="save()">Save</button>
+    </mat-card-actions>
+  </mat-card>
 </app-page-wrapper>
