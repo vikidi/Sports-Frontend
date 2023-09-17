@@ -8,6 +8,10 @@
     </mat-card-header>
     <mat-card-content>
       <mat-divider></mat-divider>
+      <div id="map">
+        <!--<app-map fxFlex [data]="e.trackPoints"></app-map>-->
+      </div>
+      <mat-divider></mat-divider>
       <div fxLayout="row" class="vertical-margin">
         <div fxFlex>
           Distance: {{ e.distanceMeters | mToKm | round : 2 }} km
@@ -22,7 +26,7 @@
         <div fxFlex>Average Cadence: {{ e.averageCadence * 2 }}</div>
         <div fxFlex>Average Watts: {{ e.averageWatts }} W</div>
       </div>
-      <div class="vertical-margin">
+      <div>
         <mat-form-field>
           <mat-label>Group</mat-label>
           <mat-select [formControl]="groupControl">

@@ -41,6 +41,7 @@ export class ExercisePageComponent implements OnInit {
   private routeSub!: Subscription;
 
   public exercise!: Observable<SimplifiedExercise>;
+  public exerciseId!: string;
   public routes!: Observable<Route[]>;
 
   public groupControl = new FormControl('');
@@ -53,10 +54,10 @@ export class ExercisePageComponent implements OnInit {
 
   ngOnInit() {
     this.routeSub = this.activatedRoute.params.subscribe((params) => {
-      this.exercise = this.exerciseService.getOne(params['id']);
+      this.exerciseId = params['id'];
+      this.exercise = this.exerciseService.getOne(this.exerciseId);
 
       this.exercise.subscribe((data) => {
-        console.log(data);
         if (data.group?.length) this.groupControl.reset(data.group);
       });
     });
@@ -65,7 +66,10 @@ export class ExercisePageComponent implements OnInit {
   }
 
   save() {
-    console.log(this.groupControl.value);
+    this.exerciseService.updateGroup(
+      this.exerciseId,
+      this.groupControl.value ?? ''
+    );
   }
 
   ngOnDestroy() {

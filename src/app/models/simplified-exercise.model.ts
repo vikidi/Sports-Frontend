@@ -10,4 +10,10 @@ export class SimplifiedExercise {
   averagePace!: number;
   averageCadence!: number;
   averageWatts!: number;
+  trackPoints!: {
+    latitude: number;
+    longitude: number;
+    altitudeMeters: number;
+    elapsedSec: number;
+  }[];
 }

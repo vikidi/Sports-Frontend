@@ -8,9 +8,11 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { NgxMapboxGLModule } from 'ngx-mapbox-gl';
 
 import { AppAuthModule } from './app-auth.module';
 import { AppRoutingModule } from './app-routing.module';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [AppComponent],
@@ -22,6 +24,9 @@ import { AppRoutingModule } from './app-routing.module';
     AppRoutingModule,
     LoadingBarRouterModule,
     FlexLayoutModule,
+    NgxMapboxGLModule.withConfig({
+      accessToken: environment.mapboxToken,
+    }),
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthHttpInterceptor, multi: true },

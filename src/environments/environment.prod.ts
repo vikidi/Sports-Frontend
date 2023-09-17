@@ -6,4 +6,5 @@ export const environment = {
   apiBaseUri: '',
   auth0ApiBaseUri: '',
   auth0Audience: '',
+  mapboxToken: '',
 };

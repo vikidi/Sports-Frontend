@@ -1,5 +1,5 @@
 import { DatePipe } from '@angular/common';
-import { Component, Input, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, Input, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { orderBy } from 'lodash';
 import { ChartComponent, NgApexchartsModule } from 'ng-apexcharts';
@@ -16,7 +16,7 @@ import { movingAverage } from 'src/app/utils/movingAverage';
   imports: [FlexLayoutModule, NgApexchartsModule],
   encapsulation: ViewEncapsulation.None,
 })
-export class GroupChartsComponent {
+export class GroupChartsComponent implements OnInit {
   @Input() group!: Group;
 
   public movingAveCadence: any[] = [];

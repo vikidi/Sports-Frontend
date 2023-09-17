@@ -13,6 +13,7 @@ import { PacePipe } from './pipes/pace.pipe';
 import { TimePipe } from './pipes/time.pipe';
 import { OrderByPipe } from './pipes/orderBy.pipe';
 import { LastMovingAveragePipe } from './pipes/lastMovingAverage.pipe';
+import { MapComponent } from './components/map/map.component';
 
 @NgModule({
   imports: [
@@ -21,6 +22,7 @@ import { LastMovingAveragePipe } from './pipes/lastMovingAverage.pipe';
     LogoutComponent,
     FooterComponent,
     NavbarComponent,
+    MapComponent,
   ],
   declarations: [
     PageWrapperComponent,
@@ -47,6 +49,7 @@ import { LastMovingAveragePipe } from './pipes/lastMovingAverage.pipe';
     TimePipe,
     OrderByPipe,
     LastMovingAveragePipe,
+    MapComponent,
   ],
 })
 export class SharedModule {}

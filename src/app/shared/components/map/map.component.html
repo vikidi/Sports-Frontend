@@ -1,0 +1,12 @@
+<mgl-map [style]="'mapbox://styles/mapbox/outdoors-v12'" [bounds]="bounds">
+  <mgl-layer
+    id="route-source"
+    type="line"
+    source="route-source"
+    [paint]="{
+      'line-color': '#627BC1',
+      'line-width': 2
+    }"
+  ></mgl-layer>
+  <mgl-geojson-source id="route-source" [data]="geometry"></mgl-geojson-source>
+</mgl-map>

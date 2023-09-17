@@ -28,4 +28,12 @@ export class ExerciseService {
       .get<SimplifiedExercise>(`${this.baseUrl}/${id}`)
       .pipe(share());
   }
+
+  updateGroup(id: string, newGroup: string): void {
+    this.http
+      .post(`${this.baseUrl}/${id}/update-group`, {
+        newGroup: newGroup,
+      })
+      .subscribe();
+  }
 }

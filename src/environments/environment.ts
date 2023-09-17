@@ -6,4 +6,6 @@ export const environment = {
   apiBaseUri: 'http://localhost:5050/',
   auth0ApiBaseUri: 'https://villesaarinen-dev.eu.auth0.com/api/v2/',
   auth0Audience: 'villesaarinen-dev.me',
+  mapboxToken:
+    'pk.eyJ1IjoidmlraWRpIiwiYSI6ImNsbW43cjlsajB4aWsycXBua3Z6MGU0Z3MifQ.-1Ss4Od4AAPW2zFQXXrL6g',
 };
