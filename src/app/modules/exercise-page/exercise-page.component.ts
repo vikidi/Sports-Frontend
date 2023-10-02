@@ -6,7 +6,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-import { ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Subscription, Observable } from 'rxjs';
 import { SimplifiedExercise } from 'src/app/models/simplified-exercise.model';
 import { ExerciseService } from 'src/app/services/exercise.service';
@@ -49,7 +49,8 @@ export class ExercisePageComponent implements OnInit {
   constructor(
     private exerciseService: ExerciseService,
     private routeService: RouteService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -70,6 +71,14 @@ export class ExercisePageComponent implements OnInit {
       this.exerciseId,
       this.groupControl.value ?? ''
     );
+  }
+
+  deleteOne() {
+    this.exerciseService.deleteOne(this.exerciseId).subscribe({
+      next: () => {
+        this.router.navigate(['/home']);
+      },
+    });
   }
 
   ngOnDestroy() {

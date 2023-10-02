@@ -36,4 +36,17 @@ export class ExerciseService {
       })
       .subscribe();
   }
+
+  deleteOne(id: string): Observable<SimplifiedExercise> {
+    const call = this.http
+      .delete<SimplifiedExercise>(`${this.baseUrl}/${id}`, {})
+      .pipe(share());
+    call.subscribe({
+      next: () =>
+        this.exercises$.next(
+          [...this.exercises$.getValue()].filter((x) => x._id !== id)
+        ),
+    });
+    return call;
+  }
 }
