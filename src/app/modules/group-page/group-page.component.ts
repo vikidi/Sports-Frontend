@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Observable, Subscription } from 'rxjs';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Observable, Subscription, take } from 'rxjs';
 
 import { Group } from 'src/app/models/group.model';
 import { GroupService } from 'src/app/services/group.service';
@@ -33,21 +33,34 @@ import { GroupChartsComponent } from './group-charts/group-charts.component';
 })
 export class GroupPageComponent implements OnInit {
   private routeSub!: Subscription;
+  private groupId!: string;
+  private routeId!: string;
 
   public group!: Observable<Group>;
 
   constructor(
     private groupService: GroupService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit() {
     this.routeSub = this.activatedRoute.params.subscribe((params) => {
       this.group = this.groupService.getOne(params['id']);
+      this.group.subscribe((g) => (this.routeId = g.route));
+      this.groupId = params['id'];
     });
   }
 
   ngOnDestroy() {
     this.routeSub.unsubscribe();
+  }
+
+  deleteGroup() {
+    this.groupService.deleteOne(this.groupId).subscribe({
+      next: () => {
+        this.router.navigate(['/routes', this.routeId]);
+      },
+    });
   }
 }

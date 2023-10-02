@@ -35,4 +35,17 @@ export class GroupService {
         next: (data) => this.groups$.next([...this.groups$.getValue(), data]),
       });
   }
+
+  deleteOne(id: string): Observable<Group> {
+    const call = this.http
+      .delete<Group>(`${this.baseUrl}/${id}`, {})
+      .pipe(share());
+    call.subscribe({
+      next: () =>
+        this.groups$.next(
+          [...this.groups$.getValue()].filter((x) => x._id !== id)
+        ),
+    });
+    return call;
+  }
 }

@@ -33,4 +33,13 @@ export class RouteService {
       next: (data) => this.routes$.next([...this.routes$.getValue(), data]),
     });
   }
+
+  deleteOne(id: string): void {
+    this.http.delete<Route>(`${this.baseUrl}/${id}`, {}).subscribe({
+      next: () =>
+        this.routes$.next(
+          [...this.routes$.getValue()].filter((x) => x._id !== id)
+        ),
+    });
+  }
 }

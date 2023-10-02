@@ -53,6 +53,12 @@
       <div *ngIf="g.exercises.length === 0">
         <h4>No exercises.</h4>
       </div>
+      <mat-divider></mat-divider>
     </mat-card-content>
+    <mat-card-actions align="end">
+      <button mat-raised-button color="warn" (click)="deleteGroup()">
+        Delete Group
+      </button>
+    </mat-card-actions>
   </mat-card>
 </app-page-wrapper>

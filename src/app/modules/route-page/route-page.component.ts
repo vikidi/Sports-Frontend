@@ -65,6 +65,10 @@ export class RoutePageComponent implements OnInit {
     this.groupService.createNew(this.routeId);
   }
 
+  deleteRoute() {
+    this.routeService.deleteOne(this.routeId);
+  }
+
   averageDirection(group: any, field: string, flatPercent: number = 0.1) {
     const lastTwo = lastTwoMovingAverages(
       orderBy(group.exercises, ['startingEpoch'], ['asc']).map(
