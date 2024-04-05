@@ -1,5 +1,5 @@
 export const environment = {
-  production: true,
+  production: false,
   auth0Domain: '',
   auth0ClientId: '',
   polarClientId: '',
