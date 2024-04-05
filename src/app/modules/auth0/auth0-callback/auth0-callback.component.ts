@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-auth0-callback',
@@ -10,6 +11,6 @@ export class Auth0CallbackComponent implements OnInit {
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
-    this.http.post('http://localhost:5050/user/create', {}).subscribe();
+    this.http.post(`${environment.apiBaseUri}/user/create`, {}).subscribe();
   }
 }

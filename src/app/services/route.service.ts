@@ -4,11 +4,13 @@ import { Observable, BehaviorSubject, share } from 'rxjs';
 
 import { Route } from '../models/route.model';
 
+import { environment } from '../../environments/environment';
+
 @Injectable({
   providedIn: 'root',
 })
 export class RouteService {
-  private baseUrl = 'http://localhost:5050/route';
+  private baseUrl = `${environment.apiBaseUri}/route`;
 
   private routes$: BehaviorSubject<Route[]> = new BehaviorSubject<Route[]>([]);
 

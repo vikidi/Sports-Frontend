@@ -16,6 +16,8 @@ import { MatCardModule } from '@angular/material/card';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 
+import { environment } from '../../../../environments/environment';
+
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -57,7 +59,7 @@ export class HomeComponent implements OnInit {
       const formData = new FormData();
       formData.append('exercise', file);
       const upload$ = this.http
-        .post('http://localhost:5050/exercise/create', formData, {
+        .post(`${environment.apiBaseUri}/exercise/create`, formData, {
           reportProgress: true,
           observe: 'events',
         })

@@ -4,11 +4,13 @@ import { Observable, BehaviorSubject, share } from 'rxjs';
 
 import { Group } from '../models/group.model';
 
+import { environment } from '../../environments/environment';
+
 @Injectable({
   providedIn: 'root',
 })
 export class GroupService {
-  private baseUrl = 'http://localhost:5050/group';
+  private baseUrl = `${environment.apiBaseUri}/group`;
 
   private groups$: BehaviorSubject<Group[]> = new BehaviorSubject<Group[]>([]);
 

@@ -4,11 +4,13 @@ import { Observable, BehaviorSubject } from 'rxjs';
 
 import { Profile } from '../models/profile.model';
 
+import { environment } from '../../environments/environment';
+
 @Injectable({
   providedIn: 'root',
 })
 export class ProfileService {
-  private baseUrl = 'http://localhost:5050/user';
+  private baseUrl = `${environment.apiBaseUri}/user`;
 
   private profile$: BehaviorSubject<Profile> = new BehaviorSubject<Profile>(
     new Profile()

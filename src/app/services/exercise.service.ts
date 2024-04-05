@@ -4,11 +4,13 @@ import { Observable, BehaviorSubject, share } from 'rxjs';
 
 import { SimplifiedExercise } from '../models/simplified-exercise.model';
 
+import { environment } from '../../environments/environment';
+
 @Injectable({
   providedIn: 'root',
 })
 export class ExerciseService {
-  private baseUrl = 'http://localhost:5050/exercise';
+  private baseUrl = `${environment.apiBaseUri}/exercise`;
 
   private exercises$: BehaviorSubject<SimplifiedExercise[]> =
     new BehaviorSubject<SimplifiedExercise[]>([]);
