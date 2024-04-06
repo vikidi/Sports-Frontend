@@ -20,7 +20,6 @@ const routes: Routes = [
   {
     path: 'auth0-callback',
     component: Auth0CallbackComponent,
-    canActivate: [AuthGuard],
   },
   {
     path: 'polar-callback',
