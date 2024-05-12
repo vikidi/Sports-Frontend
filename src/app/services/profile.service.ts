@@ -10,7 +10,7 @@ import { environment } from '../../environments/environment';
   providedIn: 'root',
 })
 export class ProfileService {
-  private baseUrl = `${environment.apiBaseUri}/user`;
+  private baseUrl = `${environment.apiBaseUri}/users`;
 
   private profile$: BehaviorSubject<Profile> = new BehaviorSubject<Profile>(
     new Profile()

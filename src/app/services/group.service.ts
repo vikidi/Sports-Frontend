@@ -10,7 +10,7 @@ import { environment } from '../../environments/environment';
   providedIn: 'root',
 })
 export class GroupService {
-  private baseUrl = `${environment.apiBaseUri}/group`;
+  private baseUrl = `${environment.apiBaseUri}/groups`;
 
   private groups$: BehaviorSubject<Group[]> = new BehaviorSubject<Group[]>([]);
 

@@ -10,7 +10,7 @@ import { environment } from '../../environments/environment';
   providedIn: 'root',
 })
 export class RouteService {
-  private baseUrl = `${environment.apiBaseUri}/route`;
+  private baseUrl = `${environment.apiBaseUri}/routes`;
 
   private routes$: BehaviorSubject<Route[]> = new BehaviorSubject<Route[]>([]);
 
