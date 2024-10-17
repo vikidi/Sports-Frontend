@@ -47,10 +47,10 @@ export class ExercisePageComponent implements OnInit {
   public groupControl = new FormControl('');
 
   constructor(
-    private exerciseService: ExerciseService,
-    private routeService: RouteService,
-    private activatedRoute: ActivatedRoute,
-    private router: Router
+    private readonly exerciseService: ExerciseService,
+    private readonly routeService: RouteService,
+    private readonly activatedRoute: ActivatedRoute,
+    private readonly router: Router
   ) {}
 
   ngOnInit() {

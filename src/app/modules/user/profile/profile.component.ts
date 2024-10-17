@@ -31,9 +31,9 @@ export class ProfileComponent implements OnInit {
   profile!: Observable<Profile>;
 
   constructor(
-    @Inject(DOCUMENT) private doc: Document,
+    @Inject(DOCUMENT) private readonly doc: Document,
     public auth: AuthService,
-    private profileService: ProfileService
+    private readonly profileService: ProfileService
   ) {}
 
   ngOnInit(): void {

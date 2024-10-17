@@ -35,7 +35,7 @@ import { environment } from '../../../../environments/environment';
   ],
 })
 export class HomeComponent implements OnInit {
-  public fileName: String = '';
+  public fileName: string = '';
   public uploadProgress: number | null = null;
   public uploadSub: Subscription | null = null;
 
@@ -43,8 +43,8 @@ export class HomeComponent implements OnInit {
 
   constructor(
     public auth: AuthService,
-    private http: HttpClient,
-    private exerciseService: ExerciseService
+    private readonly http: HttpClient,
+    private readonly exerciseService: ExerciseService
   ) {}
 
   ngOnInit() {
@@ -59,7 +59,7 @@ export class HomeComponent implements OnInit {
       const formData = new FormData();
       formData.append('exercise', file);
       const upload$ = this.http
-        .post(`${environment.apiBaseUri}/exercise/create`, formData, {
+        .post(`${environment.apiBaseUri}/exercises`, formData, {
           reportProgress: true,
           observe: 'events',
         })

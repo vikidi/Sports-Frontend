@@ -11,15 +11,20 @@ import { environment } from '../../../../environments/environment';
 })
 export class PolarCallbackComponent implements OnInit {
   constructor(
-    private route: ActivatedRoute,
-    private router: Router,
-    private http: HttpClient
+    private readonly route: ActivatedRoute,
+    private readonly router: Router,
+    private readonly http: HttpClient
   ) {}
 
   ngOnInit() {
     this.route.queryParams.subscribe((params) => {
+      if (params['error'] === 'access_denied') {
+        this.router.navigateByUrl('/home');
+        return;
+      }
+
       this.http
-        .post(`${environment.apiBaseUri}/user/polar-token`, {
+        .post(`${environment.apiBaseUri}/users/polar-token`, {
           code: params['code'],
         })
         .subscribe(() => {

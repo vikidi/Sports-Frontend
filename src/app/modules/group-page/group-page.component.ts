@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Observable, Subscription, take } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 
 import { Group } from 'src/app/models/group.model';
 import { GroupService } from 'src/app/services/group.service';
@@ -39,9 +39,9 @@ export class GroupPageComponent implements OnInit {
   public group!: Observable<Group>;
 
   constructor(
-    private groupService: GroupService,
-    private activatedRoute: ActivatedRoute,
-    private router: Router
+    private readonly groupService: GroupService,
+    private readonly activatedRoute: ActivatedRoute,
+    private readonly router: Router
   ) {}
 
   ngOnInit() {

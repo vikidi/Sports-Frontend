@@ -8,9 +8,9 @@ import { environment } from '../../../../environments/environment';
   styleUrls: ['./auth0-callback.component.scss'],
 })
 export class Auth0CallbackComponent implements OnInit {
-  constructor(private http: HttpClient) {}
+  constructor(private readonly http: HttpClient) {}
 
   ngOnInit() {
-    this.http.post(`${environment.apiBaseUri}/user/create`, {}).subscribe();
+    this.http.post(`${environment.apiBaseUri}/users/create`, {}).subscribe();
   }
 }

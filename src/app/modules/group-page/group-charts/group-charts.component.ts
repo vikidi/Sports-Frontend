@@ -1,5 +1,11 @@
 import { DatePipe } from '@angular/common';
-import { Component, Input, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnInit,
+  ViewChild,
+  ViewEncapsulation,
+} from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { orderBy } from 'lodash';
 import { ChartComponent, NgApexchartsModule } from 'ng-apexcharts';
@@ -30,7 +36,7 @@ export class GroupChartsComponent implements OnInit {
 
   @ViewChild('chart') chart!: ChartComponent;
 
-  constructor(private styleManager: StyleManager) {
+  constructor(private readonly styleManager: StyleManager) {
     const initMode = this.styleManager.isInitDark() ? 'dark' : 'light';
     this.commonOptions = {
       stroke: {
@@ -239,12 +245,12 @@ export class GroupChartsComponent implements OnInit {
   dateFormatter(date: string): string {
     const datePipe = new DatePipe('en-US');
     let formatted = datePipe.transform(date, 'd.M.');
-    return formatted ? formatted : date;
+    return formatted ?? date;
   }
 
   paceFormatter(pace: number): string {
     const datePipe = new PacePipe();
     let formatted = datePipe.transform(pace);
-    return formatted ? formatted : pace.toString();
+    return formatted || pace.toString();
   }
 }

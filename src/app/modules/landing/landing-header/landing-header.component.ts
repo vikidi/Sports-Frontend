@@ -29,7 +29,7 @@ import { Observable } from 'rxjs';
 export class LandingHeaderComponent {
   isDark: Observable<boolean>;
 
-  constructor(public auth: AuthService, private styleManager: StyleManager) {
+  constructor(public auth: AuthService, private readonly styleManager: StyleManager) {
     this.isDark = this.styleManager.isDark();
   }
 

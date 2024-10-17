@@ -45,9 +45,9 @@ export class RoutePageComponent implements OnInit {
   };
 
   constructor(
-    private routeService: RouteService,
-    private activatedRoute: ActivatedRoute,
-    private groupService: GroupService
+    private readonly routeService: RouteService,
+    private readonly activatedRoute: ActivatedRoute,
+    private readonly groupService: GroupService
   ) {}
 
   ngOnInit() {

@@ -10,7 +10,7 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./polar-connect.component.css'],
 })
 export class PolarConnectComponent {
-  constructor(@Inject(DOCUMENT) private document: Document) {}
+  constructor(@Inject(DOCUMENT) private readonly document: Document) {}
 
   connect(): void {
     this.document.location.href = `https://flow.polar.com/oauth2/authorization?response_type=code&client_id=${environment.polarClientId}`;
