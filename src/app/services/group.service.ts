@@ -18,7 +18,7 @@ export class GroupService {
 
   getMyList(): Observable<Group[]> {
     if (!this.groups$.getValue().length) {
-      this.http.get<Group[]>(`${this.baseUrl}/my-list`).subscribe({
+      this.http.get<Group[]>(`${this.baseUrl}`).subscribe({
         next: (data) => this.groups$.next(data),
       });
     }
@@ -31,11 +31,9 @@ export class GroupService {
   }
 
   createNew(routeId: string): void {
-    this.http
-      .post<Group>(`${this.baseUrl}/create`, { routeId: routeId })
-      .subscribe({
-        next: (data) => this.groups$.next([...this.groups$.getValue(), data]),
-      });
+    this.http.post<Group>(`${this.baseUrl}`, { routeId: routeId }).subscribe({
+      next: (data) => this.groups$.next([...this.groups$.getValue(), data]),
+    });
   }
 
   deleteOne(id: string): Observable<Group> {

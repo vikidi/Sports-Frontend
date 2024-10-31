@@ -11,6 +11,6 @@ export class Auth0CallbackComponent implements OnInit {
   constructor(private readonly http: HttpClient) {}
 
   ngOnInit() {
-    this.http.post(`${environment.apiBaseUri}/users/create`, {}).subscribe();
+    this.http.post(`${environment.apiBaseUri}/users`, {}).subscribe();
   }
 }

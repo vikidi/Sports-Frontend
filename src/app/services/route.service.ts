@@ -18,7 +18,7 @@ export class RouteService {
 
   getMyList(): Observable<Route[]> {
     if (!this.routes$.getValue().length) {
-      this.http.get<Route[]>(`${this.baseUrl}/my-list`).subscribe({
+      this.http.get<Route[]>(`${this.baseUrl}`).subscribe({
         next: (data) => this.routes$.next(data),
       });
     }
@@ -31,7 +31,7 @@ export class RouteService {
   }
 
   createNew(): void {
-    this.http.post<Route>(`${this.baseUrl}/create`, {}).subscribe({
+    this.http.post<Route>(`${this.baseUrl}`, {}).subscribe({
       next: (data) => this.routes$.next([...this.routes$.getValue(), data]),
     });
   }

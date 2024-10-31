@@ -17,7 +17,7 @@ export class ProfileService {
   );
 
   constructor(private http: HttpClient) {
-    this.http.get<Profile>(`${this.baseUrl}/self`).subscribe({
+    this.http.get<Profile>(`${this.baseUrl}`).subscribe({
       next: (data) => this.profile$.next(data),
     });
   }

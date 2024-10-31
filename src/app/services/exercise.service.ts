@@ -16,7 +16,7 @@ export class ExerciseService {
     new BehaviorSubject<SimplifiedExercise[]>([]);
 
   constructor(private http: HttpClient) {
-    this.http.get<SimplifiedExercise[]>(`${this.baseUrl}/my-list`).subscribe({
+    this.http.get<SimplifiedExercise[]>(`${this.baseUrl}`).subscribe({
       next: (data) => this.exercises$.next(data),
     });
   }
