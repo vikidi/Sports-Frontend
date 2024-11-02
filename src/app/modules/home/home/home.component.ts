@@ -59,7 +59,7 @@ export class HomeComponent implements OnInit {
       const formData = new FormData();
       formData.append('exercise', file);
       const upload$ = this.http
-        .post(`${environment.apiBaseUri}/exercises`, formData, {
+        .post(`${environment.apiBaseUri}/auth/exercises`, formData, {
           reportProgress: true,
           observe: 'events',
         })

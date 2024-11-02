@@ -10,7 +10,7 @@ import { environment } from '../../environments/environment';
   providedIn: 'root',
 })
 export class ExerciseService {
-  private baseUrl = `${environment.apiBaseUri}/exercises`;
+  private baseUrl = `${environment.apiBaseUri}/auth/exercises`;
 
   private exercises$: BehaviorSubject<SimplifiedExercise[]> =
     new BehaviorSubject<SimplifiedExercise[]>([]);

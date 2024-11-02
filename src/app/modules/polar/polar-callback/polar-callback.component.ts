@@ -24,7 +24,7 @@ export class PolarCallbackComponent implements OnInit {
       }
 
       this.http
-        .post(`${environment.apiBaseUri}/users/polar-token`, {
+        .post(`${environment.apiBaseUri}/auth/users/polar-token`, {
           code: params['code'],
         })
         .subscribe(() => {
