@@ -8,11 +8,12 @@ const authSetup = {
   authorizationParams: {
     redirect_uri: `${window.location.origin}/auth0-callback`,
     audience: environment.auth0Audience,
+    scope: 'profile email create:admin read:admin update:admin delete:admin',
   },
   httpInterceptor: {
     allowedList: [
       {
-        uri: `${environment.apiBaseUri}*`,
+        uri: `${environment.apiBaseUri}/auth/*`,
       },
       {
         uri: `${environment.auth0ApiBaseUri}*`,

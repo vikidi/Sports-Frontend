@@ -1,0 +1,21 @@
+#admin-card-content {
+  padding: 0;
+  height: 100%;
+}
+
+mat-sidenav-container {
+  height: 100%;
+}
+
+mat-sidenav {
+  padding: 0 2vw;
+}
+
+mat-sidenav-content {
+  background-color: var(--mdc-elevated-card-container-color);
+  padding: 2vw;
+}
+
+.mat-drawer-container {
+  background-color: var(--mdc-elevated-card-container-color);
+}

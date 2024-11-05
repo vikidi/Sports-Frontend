@@ -14,6 +14,7 @@ import { TimePipe } from './pipes/time.pipe';
 import { OrderByPipe } from './pipes/orderBy.pipe';
 import { LastMovingAveragePipe } from './pipes/lastMovingAverage.pipe';
 import { MapComponent } from './components/map/map.component';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   imports: [
@@ -23,6 +24,7 @@ import { MapComponent } from './components/map/map.component';
     FooterComponent,
     NavbarComponent,
     MapComponent,
+    MatCardModule,
   ],
   declarations: [
     PageWrapperComponent,

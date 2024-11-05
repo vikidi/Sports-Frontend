@@ -13,6 +13,9 @@ import { RoutePageComponent } from './modules/route-page/route-page.component';
 import { PageNotFoundComponent } from './modules/page-not-found/page-not-found.component';
 import { GroupPageComponent } from './modules/group-page/group-page.component';
 import { ExercisePageComponent } from './modules/exercise-page/exercise-page.component';
+import { AdminHomeComponent } from './modules/admin/admin-home/admin-home.component';
+import { ConnectionPageComponent } from './modules/admin/connection/component-page/connection-page.component';
+import { ConnectionListComponent } from './modules/admin/connection/list/connection-list.component';
 
 const routes: Routes = [
   { path: '', component: LandingComponent },
@@ -49,6 +52,21 @@ const routes: Routes = [
   {
     path: 'exercises/:id',
     component: ExercisePageComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'admin',
+    component: AdminHomeComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'admin/connections',
+    component: ConnectionListComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'admin/connections/:id',
+    component: ConnectionPageComponent,
     canActivate: [AuthGuard],
   },
 

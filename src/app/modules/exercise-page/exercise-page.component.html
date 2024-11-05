@@ -1,5 +1,5 @@
 <app-page-wrapper>
-  <mat-card *ngIf="exercise | async as e">
+  <div *ngIf="exercise | async as e">
     <mat-card-header>
       <mat-card-title>{{ e.sport }}</mat-card-title>
       <mat-card-subtitle>{{
@@ -53,5 +53,5 @@
         Delete
       </button>
     </mat-card-actions>
-  </mat-card>
+  </div>
 </app-page-wrapper>

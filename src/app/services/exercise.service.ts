@@ -33,8 +33,8 @@ export class ExerciseService {
 
   updateGroup(id: string, newGroup: string): void {
     this.http
-      .post(`${this.baseUrl}/${id}/update-group`, {
-        newGroup: newGroup,
+      .patch(`${this.baseUrl}/${id}`, {
+        group: newGroup,
       })
       .subscribe();
   }

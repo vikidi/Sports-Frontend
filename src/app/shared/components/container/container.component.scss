@@ -10,7 +10,14 @@
   text-align: center;
   justify-content: center;
   flex-direction: column;
-  width: 100%;
-  height: 100%;
   display: flex;
+  align-self: stretch;
+  width: 100%;
+}
+
+mat-card {
+  justify-content: center;
+  margin: 4vw;
+  height: 100%;
+  padding: 0;
 }

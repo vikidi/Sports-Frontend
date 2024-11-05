@@ -7,26 +7,33 @@
     <button
       mat-icon-button
       [routerLink]="'/home'"
-      *ngIf="(auth.isAuthenticated$ | async) === true"
+      *ngIf="auth.isAuthenticated$ | async"
     >
       <mat-icon>directions_run</mat-icon>
     </button>
     <button
       mat-icon-button
       [routerLink]="'/routes'"
-      *ngIf="(auth.isAuthenticated$ | async) === true"
+      *ngIf="auth.isAuthenticated$ | async"
     >
       <mat-icon>route</mat-icon>
     </button>
     <button
       mat-icon-button
       [routerLink]="'/profile'"
-      *ngIf="(auth.isAuthenticated$ | async) === true"
+      *ngIf="auth.isAuthenticated$ | async"
     >
       <mat-icon>person</mat-icon>
     </button>
+    <button
+      mat-icon-button
+      [routerLink]="'/admin'"
+      *ngIf="(auth.isAuthenticated$ | async) && isAdmin"
+    >
+      <mat-icon>admin_panel_settings</mat-icon>
+    </button>
     <app-login *ngIf="(auth.isAuthenticated$ | async) === false" />
-    <app-logout *ngIf="(auth.isAuthenticated$ | async) === true" />
+    <app-logout *ngIf="auth.isAuthenticated$ | async" />
     <button
       mat-icon-button
       (click)="toggleDarkTheme()"

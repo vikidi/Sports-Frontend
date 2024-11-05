@@ -1,5 +1,5 @@
 <app-page-wrapper>
-  <mat-card *ngIf="group | async as g">
+  <div *ngIf="group | async as g">
     <mat-card-header>
       <mat-card-title>{{ g.name }}</mat-card-title>
       <mat-card-subtitle>{{ g.description }}</mat-card-subtitle>
@@ -60,5 +60,5 @@
         Delete Group
       </button>
     </mat-card-actions>
-  </mat-card>
+  </div>
 </app-page-wrapper>

@@ -7,69 +7,63 @@
 />
 
 <app-page-wrapper>
-  <mat-card>
-    <mat-card-header>
-      <mat-card-title>Exercises</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <mat-divider></mat-divider>
-      <mat-nav-list>
-        <div
-          *ngFor="
-            let exercise of exercises
-              | async
-              | orderBy : 'startingEpoch' : 'desc'
-          "
-        >
-          <a
-            class="list-item"
-            mat-list-item
-            href="/exercises/{{ exercise._id }}"
-            fxLayout="row"
-          >
-            <div fxFlex fxLayout="row" class="center">
-              <div class="list-item-icon">
-                <mat-icon matListItemIcon *ngIf="exercise.sport === 'Running'"
-                  >directions_run</mat-icon
-                >
-              </div>
-              <div>
-                <div matListItemTitle>{{ exercise.sport }}</div>
-                <div matListItemLine>
-                  {{ exercise.parsedDate | date : "dd.MM.yyyy" }}
-                </div>
-              </div>
-            </div>
-            <div fxFlex>
-              <div matListItemLine>
-                {{ exercise.distanceMeters | mToKm | round : 2 }} km
-              </div>
-              <div matListItemLine>{{ exercise.elapsedSec | time }}</div>
-            </div>
-            <div fxFlex>
-              <div matListItemLine>
-                {{ exercise.averagePace | pace }} min/km
-              </div>
-              <div matListItemLine>{{ exercise.averageHeartRate }} bpm</div>
-            </div>
-          </a>
-          <mat-divider class="list-divider"></mat-divider>
-        </div>
-      </mat-nav-list>
-      <div *ngIf="(exercises | async)?.length === 0">
-        <h4>No exercises.</h4>
-      </div>
-      <mat-divider></mat-divider>
-    </mat-card-content>
-    <mat-card-actions align="end">
-      <button
-        mat-raised-button
-        color="primary"
-        class="upload-btn"
-        (click)="fileUpload.click()"
+  <mat-card-header>
+    <mat-card-title>Exercises</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-divider></mat-divider>
+    <mat-nav-list>
+      <div
+        *ngFor="
+          let exercise of exercises | async | orderBy : 'startingEpoch' : 'desc'
+        "
       >
-        Upload .tcx
-      </button>
-    </mat-card-actions>
-  </mat-card>
+        <a
+          class="list-item"
+          mat-list-item
+          href="/exercises/{{ exercise._id }}"
+          fxLayout="row"
+        >
+          <div fxFlex fxLayout="row" class="center">
+            <div class="list-item-icon">
+              <mat-icon matListItemIcon *ngIf="exercise.sport === 'Running'"
+                >directions_run</mat-icon
+              >
+            </div>
+            <div>
+              <div matListItemTitle>{{ exercise.sport }}</div>
+              <div matListItemLine>
+                {{ exercise.parsedDate | date : "dd.MM.yyyy" }}
+              </div>
+            </div>
+          </div>
+          <div fxFlex>
+            <div matListItemLine>
+              {{ exercise.distanceMeters | mToKm | round : 2 }} km
+            </div>
+            <div matListItemLine>{{ exercise.elapsedSec | time }}</div>
+          </div>
+          <div fxFlex>
+            <div matListItemLine>{{ exercise.averagePace | pace }} min/km</div>
+            <div matListItemLine>{{ exercise.averageHeartRate }} bpm</div>
+          </div>
+        </a>
+        <mat-divider class="list-divider"></mat-divider>
+      </div>
+    </mat-nav-list>
+    <div *ngIf="(exercises | async)?.length === 0">
+      <h4>No exercises.</h4>
+    </div>
+    <mat-divider></mat-divider>
+  </mat-card-content>
+  <mat-card-actions align="end">
+    <button
+      mat-raised-button
+      color="primary"
+      class="upload-btn"
+      (click)="fileUpload.click()"
+    >
+      Upload .tcx
+    </button>
+  </mat-card-actions>
 </app-page-wrapper>
