@@ -16,7 +16,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 
 import { meanBy, orderBy } from 'lodash';
-import { lastTwoMovingAverages } from 'src/app/utils/lastTwoMovingAverages';
+import { lastTwoMovingAverages } from 'src/app/utils/movingAverage';
 
 @Component({
   selector: 'app-route-page',

@@ -1,38 +1,26 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { roundUtil } from 'src/app/utils/roundUtil';
 
 @Pipe({ name: 'time' })
 export class TimePipe implements PipeTransform {
-  transform(value: number): string {
-    const hourValue = value / 3600;
-
-    let hours = Math.floor(hourValue);
-
-    const hourReminder = hourValue - hours;
-    const minutesValue = hourReminder * 60;
-
-    let minutes = Math.floor(minutesValue);
-
-    const secondsRemainder = minutesValue - minutes;
-    let seconds = roundUtil(secondsRemainder * 60, 0);
-
-    if (seconds === 60) {
-      minutes += 1;
-      seconds = 0;
+  /**
+   * Converts total seconds to time string in the format HH:mm:ss
+   *
+   * @param {number} totalSeconds The total number of seconds to convert
+   * @returns {string} The time string in the format HH:mm:ss
+   */
+  transform(totalSeconds: number): string {
+    const isInvalid = totalSeconds < 0 || isNaN(totalSeconds);
+    if (isInvalid) {
+      return '00:00:00';
     }
 
-    if (minutes === 60) {
-      hours += 1;
-      minutes = 0;
-    }
+    const hours = Math.floor(totalSeconds / 3600);
+    const minutes = Math.floor((totalSeconds % 3600) / 60);
+    const seconds = Math.floor(totalSeconds % 60);
 
-    let hourString = hours.toString();
-    let minuteString = minutes.toString();
-    let secondString = seconds.toString();
-
-    if (hourString.length === 1) hourString = '0' + hourString;
-    if (minuteString.length === 1) minuteString = '0' + minuteString;
-    if (secondString.length === 1) secondString = '0' + secondString;
+    const hourString = hours.toString().padStart(2, '0');
+    const minuteString = minutes.toString().padStart(2, '0');
+    const secondString = seconds.toString().padStart(2, '0');
 
     return `${hourString}:${minuteString}:${secondString}`;
   }
