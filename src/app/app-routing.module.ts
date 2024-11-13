@@ -6,7 +6,7 @@ import { AuthGuard } from '@auth0/auth0-angular';
 import { LandingComponent } from './modules/landing/landing/landing.component';
 import { HomeComponent } from './modules/home/home/home.component';
 import { PolarCallbackComponent } from './modules/polar/polar-callback/polar-callback.component';
-import { Auth0CallbackComponent } from './modules/auth0/auth0-callback/auth0-callback.component';
+import { Auth0CallbackComponent } from './shared/components/auth0-callback/auth0-callback.component';
 import { ProfileComponent } from './modules/user/profile/profile.component';
 import { RouteListComponent } from './modules/route-list/route-list.component';
 import { RoutePageComponent } from './modules/route-page/route-page.component';
@@ -14,7 +14,7 @@ import { PageNotFoundComponent } from './modules/page-not-found/page-not-found.c
 import { GroupPageComponent } from './modules/group-page/group-page.component';
 import { ExercisePageComponent } from './modules/exercise-page/exercise-page.component';
 import { AdminHomeComponent } from './modules/admin/admin-home/admin-home.component';
-import { ConnectionPageComponent } from './modules/admin/connection/component-page/connection-page.component';
+import { ConnectionPageComponent } from './modules/admin/connection/connection-page/connection-page.component';
 import { ConnectionListComponent } from './modules/admin/connection/list/connection-list.component';
 
 const routes: Routes = [
@@ -75,7 +75,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { bindToComponentInputs: true })],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

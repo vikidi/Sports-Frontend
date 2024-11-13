@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { LoginComponent } from './components/login/login.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { PageWrapperComponent } from './components/page-wrapper/page-wrapper.component';
@@ -15,6 +14,7 @@ import { OrderByPipe } from './pipes/orderBy.pipe';
 import { LastMovingAveragePipe } from './pipes/lastMovingAverage.pipe';
 import { MapComponent } from './components/map/map.component';
 import { MatCardModule } from '@angular/material/card';
+import { Auth0CallbackComponent } from './components/auth0-callback/auth0-callback.component';
 
 @NgModule({
   imports: [
@@ -29,6 +29,7 @@ import { MatCardModule } from '@angular/material/card';
   declarations: [
     PageWrapperComponent,
     ContainerComponent,
+    Auth0CallbackComponent,
     RoundPipe,
     MetersToKilometersPipe,
     PacePipe,
@@ -52,6 +53,7 @@ import { MatCardModule } from '@angular/material/card';
     OrderByPipe,
     LastMovingAveragePipe,
     MapComponent,
+    Auth0CallbackComponent,
   ],
 })
 export class SharedModule {}

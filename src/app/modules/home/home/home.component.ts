@@ -48,7 +48,7 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.exercises = this.exerciseService.getMyList();
+    this.exercises = this.exerciseService.getAll();
   }
 
   onFileSelected(event: any) {

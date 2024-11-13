@@ -1,18 +1,18 @@
 <app-page-wrapper>
-  <div *ngIf="group | async as g">
+  <div *ngIf="group">
     <mat-card-header>
-      <mat-card-title>{{ g.name }}</mat-card-title>
-      <mat-card-subtitle>{{ g.description }}</mat-card-subtitle>
+      <mat-card-title>{{ group.name }}</mat-card-title>
+      <mat-card-subtitle>{{ group.description }}</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
       <mat-divider></mat-divider>
-      <app-group-charts [group]="g"></app-group-charts>
+      <app-group-charts [group]="group"></app-group-charts>
       <mat-divider></mat-divider>
       <h3>Exercises</h3>
       <mat-nav-list>
         <div
           *ngFor="
-            let exercise of g.exercises | orderBy : 'startingEpoch' : 'desc'
+            let exercise of group.exercises | orderBy : 'startingEpoch' : 'desc'
           "
         >
           <a
@@ -50,7 +50,7 @@
           <mat-divider class="list-divider"></mat-divider>
         </div>
       </mat-nav-list>
-      <div *ngIf="g.exercises.length === 0">
+      <div *ngIf="group.exercises.length === 0">
         <h4>No exercises.</h4>
       </div>
       <mat-divider></mat-divider>

@@ -1,47 +1,30 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, BehaviorSubject, share } from 'rxjs';
-
+import { Observable } from 'rxjs';
 import { Route } from '../models/route.model';
-
 import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class RouteService {
-  private baseUrl = `${environment.apiBaseUri}/auth/routes`;
+  public static readonly baseUrl = `${environment.apiBaseUri}/auth/routes`;
 
-  private routes$: BehaviorSubject<Route[]> = new BehaviorSubject<Route[]>([]);
+  constructor(private readonly http: HttpClient) {}
 
-  constructor(private http: HttpClient) {}
-
-  getMyList(): Observable<Route[]> {
-    if (!this.routes$.getValue().length) {
-      this.http.get<Route[]>(`${this.baseUrl}`).subscribe({
-        next: (data) => this.routes$.next(data),
-      });
-    }
-
-    return this.routes$;
+  getAll(): Observable<Route[]> {
+    return this.http.get<Route[]>(RouteService.baseUrl);
   }
 
-  getOne(id: string): Observable<Route> {
-    return this.http.get<Route>(`${this.baseUrl}/${id}`).pipe(share());
+  get(id: string): Observable<Route> {
+    return this.http.get<Route>(`${RouteService.baseUrl}/${id}`);
   }
 
-  createNew(): void {
-    this.http.post<Route>(`${this.baseUrl}`, {}).subscribe({
-      next: (data) => this.routes$.next([...this.routes$.getValue(), data]),
-    });
+  create(): Observable<Route> {
+    return this.http.post<Route>(RouteService.baseUrl, {});
   }
 
-  deleteOne(id: string): void {
-    this.http.delete<Route>(`${this.baseUrl}/${id}`, {}).subscribe({
-      next: () =>
-        this.routes$.next(
-          [...this.routes$.getValue()].filter((x) => x._id !== id)
-        ),
-    });
+  delete(id: string): Observable<Route> {
+    return this.http.delete<Route>(`${RouteService.baseUrl}/${id}`);
   }
 }

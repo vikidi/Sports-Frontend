@@ -1,5 +1,5 @@
 <app-page-wrapper>
-  <div *ngIf="route | async as route">
+  <div *ngIf="route">
     <mat-card-header>
       <mat-card-title>{{ route.name }}</mat-card-title>
       <mat-card-subtitle>{{ route.description }}</mat-card-subtitle>
@@ -21,7 +21,7 @@
             <div
               class="fixed-icon"
               fxFlex
-              *ngIf="route.defaultGroup._id === group._id"
+              *ngIf="route.defaultGroup?._id === group._id"
             >
               <mat-icon fxFlex>star-outline</mat-icon>
             </div>
@@ -110,7 +110,7 @@
           <mat-divider class="list-divider"></mat-divider>
         </div>
       </mat-nav-list>
-      <div *ngIf="route.groups.length === 0">
+      <div *ngIf="route.groups?.length === 0">
         <h4>No groups.</h4>
       </div>
       <mat-divider></mat-divider>

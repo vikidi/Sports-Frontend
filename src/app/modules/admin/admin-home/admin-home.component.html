@@ -2,11 +2,34 @@
   <mat-card-content id="admin-card-content">
     <mat-sidenav-container>
       <mat-sidenav mode="side" opened>
-        <h2>Start 1</h2>
-        <h2>Start 2</h2>
-        <h2>Start 3</h2>
+        <div>
+          <button
+            mat-button
+            class="sidenav-button"
+            (click)="template = connections"
+            [class.active]="template == connections"
+          >
+            Connections
+          </button>
+        </div>
+        <div>
+          <button
+            mat-button
+            class="sidenav-button"
+            (click)="template = testing"
+            [class.active]="template == testing"
+          >
+            Testing
+          </button>
+        </div>
       </mat-sidenav>
-      <mat-sidenav-content>Main Admin</mat-sidenav-content>
+      <ng-container [ngTemplateOutlet]="template"></ng-container>
     </mat-sidenav-container>
   </mat-card-content>
 </app-page-wrapper>
+
+<ng-template #connections> Connections content content </ng-template>
+
+<ng-template #testing> Testing content lorem ipsum </ng-template>
+
+{{ select(connections) }}

@@ -14,10 +14,14 @@ export class OrderByPipe implements PipeTransform {
    * @returns {any[]} The sorted array.
    */
   transform(
-    input: any[],
+    input: any[] | null,
     property: string,
     order: boolean | 'asc' | 'desc' = 'asc'
   ): any[] {
+    if (input === null) {
+      return [];
+    }
+
     if (input.some((element) => !element.hasOwnProperty(property))) {
       return input;
     }

@@ -5,7 +5,7 @@
   <mat-card-content>
     <mat-divider></mat-divider>
     <mat-nav-list>
-      <div *ngFor="let route of routes | async">
+      <div *ngFor="let route of routes">
         <a
           class="list-item"
           mat-list-item
@@ -22,7 +22,7 @@
             <div matListItemLine>Groups: {{ route.groups.length }}</div>
             <div matListItemLine>
               Exercises:
-              {{ route.groups.reduce(exerciseCounter, 0) }}
+              {{ exerciseCount(route) }}
             </div>
           </div>
           <div fxFlex>
@@ -42,7 +42,7 @@
         <mat-divider class="list-divider"></mat-divider>
       </div>
     </mat-nav-list>
-    <div *ngIf="(routes | async)?.length === 0">
+    <div *ngIf="routes?.length === 0">
       <h4>No routes.</h4>
     </div>
     <mat-divider></mat-divider>

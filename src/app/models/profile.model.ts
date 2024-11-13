@@ -1,3 +1,3 @@
-export class Profile {
-  polarConnected!: boolean;
+export interface Profile {
+  polarConnected: boolean;
 }

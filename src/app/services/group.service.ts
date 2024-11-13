@@ -1,51 +1,32 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, BehaviorSubject, share } from 'rxjs';
-
+import { Observable } from 'rxjs';
 import { Group } from '../models/group.model';
-
 import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class GroupService {
-  private baseUrl = `${environment.apiBaseUri}/auth/groups`;
+  public static readonly baseUrl = `${environment.apiBaseUri}/auth/groups`;
 
-  private groups$: BehaviorSubject<Group[]> = new BehaviorSubject<Group[]>([]);
+  constructor(private readonly http: HttpClient) {}
 
-  constructor(private http: HttpClient) {}
-
-  getMyList(): Observable<Group[]> {
-    if (!this.groups$.getValue().length) {
-      this.http.get<Group[]>(`${this.baseUrl}`).subscribe({
-        next: (data) => this.groups$.next(data),
-      });
-    }
-
-    return this.groups$;
+  getAll(): Observable<Group[]> {
+    return this.http.get<Group[]>(`${GroupService.baseUrl}`);
   }
 
-  getOne(id: string): Observable<Group> {
-    return this.http.get<Group>(`${this.baseUrl}/${id}`).pipe(share());
+  get(id: string): Observable<Group> {
+    return this.http.get<Group>(`${GroupService.baseUrl}/${id}`);
   }
 
-  createNew(routeId: string): void {
-    this.http.post<Group>(`${this.baseUrl}`, { routeId: routeId }).subscribe({
-      next: (data) => this.groups$.next([...this.groups$.getValue(), data]),
+  create(routeId: string): Observable<Group> {
+    return this.http.post<Group>(`${GroupService.baseUrl}`, {
+      routeId: routeId,
     });
   }
 
-  deleteOne(id: string): Observable<Group> {
-    const call = this.http
-      .delete<Group>(`${this.baseUrl}/${id}`, {})
-      .pipe(share());
-    call.subscribe({
-      next: () =>
-        this.groups$.next(
-          [...this.groups$.getValue()].filter((x) => x._id !== id)
-        ),
-    });
-    return call;
+  delete(id: string): Observable<Group> {
+    return this.http.delete<Group>(`${GroupService.baseUrl}/${id}`);
   }
 }

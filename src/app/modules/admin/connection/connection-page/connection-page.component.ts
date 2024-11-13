@@ -1,11 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
-import { Observable, Subscription } from 'rxjs';
+import { Component, Input, OnInit } from '@angular/core';
 import { Connection } from 'src/app/models/connection.model';
 import { ConnectionService } from 'src/app/services/admin/connection.service';
 import { MatCardModule } from '@angular/material/card';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 
 @Component({
@@ -16,27 +15,36 @@ import { MatButtonModule } from '@angular/material/button';
   imports: [CommonModule, SharedModule, MatCardModule, MatButtonModule],
 })
 export class ConnectionPageComponent implements OnInit {
-  public connection!: Observable<Connection>;
-  private connectionId!: string;
+  @Input('id') connectionId!: string;
+
+  public connection?: Connection;
 
   constructor(
     private readonly connectionService: ConnectionService,
-    private readonly activatedRoute: ActivatedRoute,
     private readonly router: Router
   ) {}
 
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe((params) => {
-      this.connection = this.connectionService.get(params['id']);
-      this.connectionId = params['id'];
+    this.refresh();
+  }
+
+  refresh(): void {
+    this.connectionService.get(this.connectionId).subscribe((connection) => {
+      this.connection = connection;
     });
   }
 
-  refresh() {}
-
   delete() {}
 
-  activate() {}
+  activate(): void {
+    this.connectionService.activate(this.connectionId).subscribe(() => {
+      this.refresh();
+    });
+  }
 
-  deactivate() {}
+  deactivate(): void {
+    this.connectionService.deactivate(this.connectionId).subscribe(() => {
+      this.refresh();
+    });
+  }
 }
