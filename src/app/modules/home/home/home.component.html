@@ -14,9 +14,7 @@
     <mat-divider></mat-divider>
     <mat-nav-list>
       <div
-        *ngFor="
-          let exercise of exercises | async | orderBy : 'startingEpoch' : 'desc'
-        "
+        *ngFor="let exercise of exercises | orderBy : 'startingEpoch' : 'desc'"
       >
         <a
           class="list-item"
@@ -51,7 +49,7 @@
         <mat-divider class="list-divider"></mat-divider>
       </div>
     </mat-nav-list>
-    <div *ngIf="(exercises | async)?.length === 0">
+    <div *ngIf="exercises?.length === 0">
       <h4>No exercises.</h4>
     </div>
     <mat-divider></mat-divider>

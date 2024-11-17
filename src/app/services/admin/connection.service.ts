@@ -16,6 +16,21 @@ export class ConnectionService {
     return this.http.get<Connection>(`${ConnectionService.baseUrl}/${id}`);
   }
 
+  create(id: string): Observable<Connection> {
+    return this.http.post<Connection>(`${ConnectionService.baseUrl}/${id}`, {});
+  }
+
+  update(id: string): Observable<Connection> {
+    return this.http.patch<Connection>(
+      `${ConnectionService.baseUrl}/${id}`,
+      {}
+    );
+  }
+
+  delete(id: string): Observable<Object> {
+    return this.http.delete(`${ConnectionService.baseUrl}/${id}`);
+  }
+
   activate(id: string): Observable<Object> {
     return this.http.post(`${ConnectionService.baseUrl}/${id}/activate`, {});
   }

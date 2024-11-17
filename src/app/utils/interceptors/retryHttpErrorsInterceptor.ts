@@ -33,7 +33,7 @@ export class RetryHttpErrorsInterceptor implements HttpInterceptor {
       count: this.retryRequestOptions.maximumRetries,
       delay: (error: HttpErrorResponse, retryCount: number) =>
         iif(
-          () => error.status <= 500 && error.status !== 0,
+          () => error.status < 500 && error.status !== 0,
           throwError(() => error),
           timer(this.retryRequestOptions.retryDelay * retryCount)
         ),

@@ -1,11 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpEventType } from '@angular/common/http';
-import { Observable, Subscription, finalize } from 'rxjs';
-
+import { Subscription, finalize } from 'rxjs';
 import { AuthService } from '@auth0/auth0-angular';
 import { ExerciseService } from 'src/app/services/exercise.service';
-
 import { MatIconModule } from '@angular/material/icon';
 import { SimplifiedExercise } from 'src/app/models/simplified-exercise.model';
 import { MatListModule } from '@angular/material/list';
@@ -13,9 +11,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { MatCardModule } from '@angular/material/card';
-
 import { FlexLayoutModule } from '@angular/flex-layout';
-
 import { environment } from '../../../../environments/environment';
 
 @Component({
@@ -39,7 +35,7 @@ export class HomeComponent implements OnInit {
   public uploadProgress: number | null = null;
   public uploadSub: Subscription | null = null;
 
-  public exercises!: Observable<SimplifiedExercise[]>;
+  public exercises!: SimplifiedExercise[];
 
   constructor(
     public auth: AuthService,
@@ -48,7 +44,9 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.exercises = this.exerciseService.getAll();
+    this.exerciseService.getAll().subscribe((exercises) => {
+      this.exercises = exercises;
+    });
   }
 
   onFileSelected(event: any) {

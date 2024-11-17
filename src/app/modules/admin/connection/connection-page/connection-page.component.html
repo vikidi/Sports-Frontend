@@ -30,9 +30,30 @@
     >
       Deactivate
     </button>
-    <button mat-raised-button color="accent" (click)="refresh()">
-      Refresh
+    <button
+      *ngIf="connection"
+      disabled="{{ !canBeUpdated() }}"
+      mat-raised-button
+      color="accent"
+      (click)="update()"
+    >
+      Update
     </button>
-    <button mat-raised-button color="warn" (click)="delete()">Delete</button>
+    <button
+      *ngIf="connection"
+      mat-raised-button
+      color="warn"
+      (click)="deleteConnection()"
+    >
+      Delete
+    </button>
+    <button
+      *ngIf="!connection"
+      mat-raised-button
+      color="primary"
+      (click)="create()"
+    >
+      Connect
+    </button>
   </mat-card-actions>
 </app-page-wrapper>
