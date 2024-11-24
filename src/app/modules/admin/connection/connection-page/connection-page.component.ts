@@ -72,4 +72,8 @@ export class ConnectionPageComponent implements OnInit {
         !arraysEqual(this.connection.remoteEvents, this.connection.events))
     );
   }
+
+  arraysEqualProxy(a: any[], b: any[]) {
+    return arraysEqual(a, b);
+  }
 }

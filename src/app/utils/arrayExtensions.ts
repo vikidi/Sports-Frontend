@@ -5,7 +5,16 @@
  * @returns true if the arrays are equal, false otherwise
  */
 export const arraysEqual = (a: any[], b: any[]): boolean => {
-  return (
-    a.every((item) => b.includes(item)) && b.every((item) => a.includes(item))
-  );
+  if (a === b) return true;
+  if (a == null || b == null) return false;
+  if (a.length !== b.length) return false;
+
+  const aSorted = a.slice().sort();
+  const bSorted = b.slice().sort();
+
+  for (let i = 0; i < a.length; ++i) {
+    if (aSorted[i] !== bSorted[i]) return false;
+  }
+
+  return true;
 };

@@ -1,17 +1,46 @@
 <app-page-wrapper>
+  <mat-card-header>
+    <mat-card-title>{{ connectionId }}</mat-card-title>
+    <mat-card-subtitle>
+      <p *ngIf="connection?.active === true" style="color: green">Active</p>
+      <p *ngIf="connection?.active === false" style="color: red">Inactive</p>
+    </mat-card-subtitle>
+  </mat-card-header>
   <mat-card-content *ngIf="connection">
-    <p>ID: {{ connection._id }}</p>
-    <p>External ID: {{ connection.externalId }}</p>
-    <p>Events: {{ connection.events.join(", ") }}</p>
-    <p>URL: {{ connection.url }}</p>
-    <p>Signature Key: {{ connection.signatureSecretKey }}</p>
-    <p>Created: {{ connection.createdAt | date : "dd.MM.yyyy HH:mm:ss" }}</p>
-    <p>Updated: {{ connection.updatedAt | date : "dd.MM.yyyy HH:mm:ss" }}</p>
-    <p>REMOTE DATA</p>
-    <p>Remote ID: {{ connection.remoteId }}</p>
-    <p>Remote Events: {{ connection.remoteEvents }}</p>
-    <p>Remote URL: {{ connection.remoteUrl }}</p>
-    <p>Active: {{ connection.active }}</p>
+    <p>
+      External ID: {{ connection.externalId }}
+      <span
+        *ngIf="connection.externalId !== connection.remoteId"
+        style="color: red"
+      >
+        ({{ connection.remoteId }})
+      </span>
+    </p>
+    <p>
+      URL: {{ connection.url }}
+      <span *ngIf="connection.url !== connection.remoteUrl" style="color: red">
+        ({{ connection.remoteUrl }})
+      </span>
+    </p>
+    <p>
+      Events: {{ connection.events.join(", ") }}
+      <span
+        *ngIf="!arraysEqualProxy(connection.events, connection.remoteEvents)"
+        style="color: red"
+      >
+        ({{ connection.remoteEvents.join(", ") }})
+      </span>
+    </p>
+    <p>
+      Signature Key:
+      {{ connection.signatureSecretKey.length !== 0 ? "*****" : "MISSING" }}
+    </p>
+    <p>
+      {{ connection.createdAt | date : "dd.MM.yyyy HH:mm:ss" }}
+      <span *ngIf="connection.createdAt !== connection.updatedAt">
+        ({{ connection.updatedAt | date : "dd.MM.yyyy HH:mm:ss" }})
+      </span>
+    </p>
   </mat-card-content>
   <mat-card-actions align="end">
     <button
