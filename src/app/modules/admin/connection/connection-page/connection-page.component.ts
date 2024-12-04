@@ -67,9 +67,12 @@ export class ConnectionPageComponent implements OnInit {
 
   canBeUpdated(): boolean {
     return (
-      this.connection !== undefined &&
-      (this.connection.remoteUrl !== this.connection.url ||
-        !arraysEqual(this.connection.remoteEvents, this.connection.events))
+      this.connection !== null &&
+      (this.connection?.local?.url !== this.connection?.remote?.url ||
+        !arraysEqual(
+          this.connection?.remote?.events ?? [],
+          this.connection?.local?.events ?? [],
+        ))
     );
   }
 

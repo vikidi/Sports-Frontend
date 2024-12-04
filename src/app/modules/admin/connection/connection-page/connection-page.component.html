@@ -2,49 +2,60 @@
   <mat-card-header>
     <mat-card-title>{{ connectionId }}</mat-card-title>
     <mat-card-subtitle>
-      <p *ngIf="connection?.active === true" style="color: green">Active</p>
-      <p *ngIf="connection?.active === false" style="color: red">Inactive</p>
+      <p *ngIf="connection?.remote?.active === true" style="color: green">
+        Active
+      </p>
+      <p *ngIf="connection?.remote?.active === false" style="color: red">
+        Inactive
+      </p>
     </mat-card-subtitle>
   </mat-card-header>
-  <mat-card-content *ngIf="connection">
+  <mat-card-content *ngIf="connection && connection.remote && connection.local">
     <p>
-      External ID: {{ connection.externalId }}
+      External ID: {{ connection.local.externalId }}
       <span
-        *ngIf="connection.externalId !== connection.remoteId"
+        *ngIf="connection.local.externalId !== connection.remote.id"
         style="color: red"
       >
-        ({{ connection.remoteId }})
+        ({{ connection.remote.id }})
       </span>
     </p>
     <p>
-      URL: {{ connection.url }}
-      <span *ngIf="connection.url !== connection.remoteUrl" style="color: red">
-        ({{ connection.remoteUrl }})
+      URL: {{ connection.local.url }}
+      <span
+        *ngIf="connection.local.url !== connection.remote.url"
+        style="color: red"
+      >
+        ({{ connection.remote.url }})
       </span>
     </p>
     <p>
-      Events: {{ connection.events.join(", ") }}
+      Events: {{ connection.local.events.join(", ") }}
       <span
-        *ngIf="!arraysEqualProxy(connection.events, connection.remoteEvents)"
+        *ngIf="
+          !arraysEqualProxy(connection.local.events, connection.remote.events)
+        "
         style="color: red"
       >
-        ({{ connection.remoteEvents.join(", ") }})
+        ({{ connection.remote.events.join(", ") }})
       </span>
     </p>
     <p>
       Signature Key:
-      {{ connection.signatureSecretKey.length !== 0 ? "*****" : "MISSING" }}
+      {{
+        connection.local.signatureSecretKey.length !== 0 ? "*****" : "MISSING"
+      }}
     </p>
     <p>
-      {{ connection.createdAt | date : "dd.MM.yyyy HH:mm:ss" }}
-      <span *ngIf="connection.createdAt !== connection.updatedAt">
-        ({{ connection.updatedAt | date : "dd.MM.yyyy HH:mm:ss" }})
+      {{ connection.local.createdAt | date: "dd.MM.yyyy HH:mm:ss" }}
+      <span *ngIf="connection.local.createdAt !== connection.local.updatedAt">
+        ({{ connection.local.updatedAt | date: "dd.MM.yyyy HH:mm:ss" }})
       </span>
     </p>
   </mat-card-content>
   <mat-card-actions align="end">
     <button
-      *ngIf="connection?.active === false"
+      *ngIf="connection?.remote?.active === false"
       mat-raised-button
       color="primary"
       (click)="activate()"
@@ -52,7 +63,7 @@
       Activate
     </button>
     <button
-      *ngIf="connection?.active"
+      *ngIf="connection?.remote?.active"
       mat-raised-button
       color="warn"
       (click)="deactivate()"
@@ -60,7 +71,7 @@
       Deactivate
     </button>
     <button
-      *ngIf="connection"
+      *ngIf="connection && connection.remote && connection.local"
       disabled="{{ !canBeUpdated() }}"
       mat-raised-button
       color="accent"
@@ -69,7 +80,7 @@
       Update
     </button>
     <button
-      *ngIf="connection"
+      *ngIf="connection && connection.remote && connection.local"
       mat-raised-button
       color="warn"
       (click)="deleteConnection()"
@@ -77,7 +88,7 @@
       Delete
     </button>
     <button
-      *ngIf="!connection"
+      *ngIf="!(connection && connection.remote && connection.local)"
       mat-raised-button
       color="primary"
       (click)="create()"
